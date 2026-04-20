@@ -1,40 +1,79 @@
 // 1. Inizializzo Mappa 1 (Italia)
-const mapItalia = L.map('map-italia').setView([42.0, 12.5], 6);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(mapItalia);
+// Ho tolto i bottoni dello zoom e il trascinamento per farla sembrare un'immagine fissa "stampata" sul foglio
+const mapItalia = L.map('map-italia', {
+    zoomControl: false,
+    dragging: false,
+    scrollWheelZoom: false,
+    doubleClickZoom: false
+}).setView([41.5, 12.5], 6);
 
-// 2. Inizializzo Mappa 2 (Regione - Vuota per ora)
+// ATTENZIONE: Abbiamo eliminato la riga L.tileLayer(...)! 
+// Niente più cartina del mondo, il contenitore ora è completamente bianco.
+
+// 2. Inizializzo Mappa 2 (Regione - nel blocco nascosto in basso)
 const mapRegione = L.map('map-regione').setView([42.0, 12.5], 6);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(mapRegione);
 
-// --- SIMULAZIONE DATI (Da sostituire con il file GeoJSON vero) ---
-async function setupMappa() {
-    
-    // Per ora mettiamo un click finto per simulare l'interazione
-    mapItalia.on('click', function(e) {
-        mostraDettaglioRegione("Toscana", e.latlng);
-    });
+// 3. Funzione per scaricare e disegnare SOLO la sagoma dell'Italia
+async function caricaSagomaItalia() {
+    // Pesco i confini ufficiali ISTAT delle regioni da un database pubblico (Openpolis)
+    const urlConfini = 'https://raw.githubusercontent.com/openpolis/geojson-italy/master/geojson/limits_IT_regions.geojson';
+
+    try {
+        const response = await fetch(urlConfini);
+        const data = await response.json();
+
+        // Dico a Leaflet di disegnare questi confini vettoriali sul foglio bianco
+        L.geoJSON(data, {
+            style: {
+                color: "#2c3e50",       // Colore del bordo (blu scuro)
+                weight: 1.5,            // Spessore del bordo
+                fillColor: "#ecf0f1",   // Colore interno della regione (grigio chiarissimo)
+                fillOpacity: 0.8        // Trasparenza
+            },
+            onEachFeature: function (feature, layer) {
+                // Aggiungo un effetto: quando passi col mouse si colora
+                layer.on('mouseover', function () {
+                    this.setStyle({ fillColor: '#3498db', fillOpacity: 0.5 });
+                });
+                layer.on('mouseout', function () {
+                    this.setStyle({ fillColor: '#ecf0f1', fillOpacity: 0.8 });
+                });
+
+                // L'azione che volevi: cliccando la singola regione si apre la parte sotto!
+                layer.on('click', function (e) {
+                    // feature.properties.reg_name contiene il nome della regione cliccata
+                    mostraDettaglioRegione(feature.properties.reg_name, e.latlng);
+                });
+            }
+        }).addTo(mapItalia);
+
+    } catch (error) {
+        console.error("Errore nel caricamento dei confini:", error);
+    }
 }
 
-// 3. Funzione scatenata dal click su una regione
+// 4. La funzione che fa apparire il blocco inferiore
 function mostraDettaglioRegione(nomeRegione, coordinate) {
-    // A. Rivelo il blocco nascosto
+    // Rivelo il blocco nascosto
     const blocco = document.getElementById('blocco-dettaglio');
     blocco.classList.remove('nascosto');
 
-    // B. TRUCCO TECNICO: Dico a Leaflet 2 di ricalcolare le sue dimensioni ora che è visibile
+    // Ricalcolo la mappa 2 (trucco tecnico)
     mapRegione.invalidateSize();
 
-    // C. Aggiorno il titolo della tabella
+    // Scrivo il nome della regione nel titolo della tabella
     document.getElementById('nome-regione-titolo').innerText = "Dettaglio " + nomeRegione;
 
-    // D. Popolo la tabella (Dati finti per ora)
+    // Metto dei dati finti per farti vedere come verrà
     document.getElementById('corpo-tabella').innerHTML = `
-        <tr><td>Massa-Carrara</td><td>1450 kWh</td></tr>
-        <tr><td>Lucca</td><td>1420 kWh</td></tr>
+        <tr><td>Massa-Carrara</td><td>1450 kWh/m²</td></tr>
+        <tr><td>Lucca</td><td>1420 kWh/m²</td></tr>
+        <tr><td>Pisa</td><td>1480 kWh/m²</td></tr>
     `;
 
-    // E. Sposto la Mappa 2 sulla regione cliccata
+    // Sposto la mappa 2 sulla regione cliccata
     mapRegione.setView(coordinate, 8);
 }
 
-setupMappa();
+// Faccio partire il disegno
+caricaSagomaItalia();
