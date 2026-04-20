@@ -1,0 +1,23 @@
+[
+  { "sigla": "AO", "nome": "Aosta", "lat": 45.737, "lon": 7.320 },
+  { "sigla": "TO", "nome": "Torino", "lat": 45.070, "lon": 7.686 },
+  { "sigla": "GE", "nome": "Genova", "lat": 44.425, "lon": 8.930 },
+  { "sigla": "MI", "nome": "Milano", "lat": 45.464, "lon": 9.190 },
+  { "sigla": "TN", "nome": "Trento", "lat": 46.067, "lon": 11.121 },
+  { "sigla": "VE", "nome": "Venezia", "lat": 45.440, "lon": 12.315 },
+  { "sigla": "TS", "nome": "Trieste", "lat": 45.649, "lon": 13.776 },
+  { "sigla": "BO", "nome": "Bologna", "lat": 44.494, "lon": 11.342 },
+  { "sigla": "FI", "nome": "Firenze", "lat": 43.769, "lon": 11.259 },
+  { "sigla": "PG", "nome": "Perugia", "lat": 43.110, "lon": 12.390 },
+  { "sigla": "AN", "nome": "Ancona", "lat": 43.615, "lon": 13.518 },
+  { "sigla": "RM", "nome": "Roma", "lat": 41.902, "lon": 12.496 },
+  { "sigla": "AQ", "nome": "L'Aquila", "lat": 42.349, "lon": 13.399 },
+  { "sigla": "CB", "nome": "Campobasso", "lat": 41.560, "lon": 14.662 },
+  { "sigla": "NA", "nome": "Napoli", "lat": 40.851, "lon": 14.268 },
+  { "sigla": "BA", "nome": "Bari", "lat": 41.117, "lon": 16.871 },
+  { "sigla": "PZ", "nome": "Potenza", "lat": 40.637, "lon": 15.808 },
+  { "sigla": "CZ", "nome": "Catanzaro", "lat": 38.909, "lon": 16.587 },
+  { "sigla": "PA", "nome": "Palermo", "lat": 38.115, "lon": 13.362 },
+  { "sigla": "CA", "nome": "Cagliari", "lat": 39.223, "lon": 9.111 },
+  { "sigla": "MS", "nome": "Massa-Carrara", "lat": 44.033, "lon": 10.138 }
+]
