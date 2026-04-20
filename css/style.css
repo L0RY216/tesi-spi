@@ -18,6 +18,13 @@ html {
     width: 100%;
 }
 
+#blocco-titolo{
+    padding: 20px;
+    background-color: #7a7f84;
+    color: white;
+    text-align: center;
+}
+
 /* --- PARTE SOPRA --- */
 .top-half {
     display: flex;

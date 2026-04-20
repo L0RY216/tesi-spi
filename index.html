@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,20 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
     <div class="app-container">
-        
+        <div id="blocco-titolo">
+            <h3>titolo</h3>
+            <p>piccola descrizione o piccolo menù</p>
+        </div>
+
         <div class="top-half">
             <aside class="sidebar">
                 <h2>Parametri SPI</h2>
                 <div id="controls">
                     <p>Seleziona i parametri per ricalcolare l'indice.</p>
-                    </div>
+                </div>
             </aside>
             <main id="map-italia"></main>
         </div>
@@ -31,7 +37,7 @@
                         </tr>
                     </thead>
                     <tbody id="corpo-tabella">
-                        </tbody>
+                    </tbody>
                 </table>
             </div>
             <div id="map-regione"></div>
@@ -42,4 +48,5 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="./js/map.js"></script>
 </body>
+
 </html>
