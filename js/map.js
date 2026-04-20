@@ -18,7 +18,7 @@ async function init() {
         const resProv = await fetch('https://raw.githubusercontent.com/openpolis/geojson-italy/master/geojson/limits_IT_provinces.geojson');
         datiProvinceGlobali = await resProv.json();
 
-        L.geoJSON(dataReg, {
+        const layerItalia = L.geoJSON(dataReg, {
             style: { color: "#2c3e50", weight: 1.5, fillColor: "#ecf0f1", fillOpacity: 1 },
             onEachFeature: (f, l) => {
                 l.on('mouseover', () => l.setStyle({ fillColor: '#3498db' }));
