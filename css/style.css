@@ -1,28 +1,29 @@
+/* --- RESET E SCROLL --- */
 body,
 html {
     margin: 0;
-    height: 100vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: auto;
+    /* Permettiamo alla pagina di crescere in altezza */
+    overflow-x: hidden;
+    /* Niente scorrimento orizzontale */
+    overflow-y: auto;
+    /* Permettiamo lo scorrimento verticale */
+    font-family: 'Segoe UI', sans-serif;
     background-color: #ffffff;
-    /* Sfondo generale bianco */
-    overflow: hidden;
-    /* Niente barre di scorrimento laterali */
 }
 
 .app-container {
     display: flex;
     flex-direction: column;
-    /* Impila Top e Bottom */
-    height: 100vh;
+    width: 100%;
 }
 
 /* --- PARTE SOPRA --- */
 .top-half {
     display: flex;
-    flex: 1;
-    /* Occupa tutto lo spazio disponibile... */
-    transition: all 0.3s ease;
-    /* ...finché non appare la parte sotto */
+    height: 100vh;
+    /* La prima schermata occupa tutto il monitor */
+    width: 100%;
 }
 
 .sidebar {
@@ -31,66 +32,41 @@ html {
     color: white;
     padding: 20px;
     flex-shrink: 0;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
 }
 
 #map-italia {
     flex-grow: 1;
-    background-color: #ffffff;
-    /* SFONDO BIANCO (Niente mari o stati esteri) */
-}
-
-/* Rimuovo il bordino grigio di default che Leaflet mette intorno alle mappe */
-.leaflet-container {
-    background: #ffffff !important;
+    background-color: #ffffff !important;
 }
 
 /* --- PARTE SOTTO --- */
 .bottom-half {
     display: flex;
-    height: 45vh;
-    /* Quando è aperta, occupa il 45% dello schermo in basso */
-    border-top: 4px solid #2c3e50;
-    /* Linea di separazione netta */
-    background: #f8f9fa;
+    height: 100vh;
+    /* Anche il dettaglio occupa una schermata intera sotto */
+    border-top: 5px solid #2c3e50;
+    background: #ffffff;
 }
 
 .nascosto {
     display: none !important;
-    /* Mantiene la parte sotto invisibile finché non clicchi */
 }
 
 .pannello-tabella {
     flex: 1;
-    padding: 20px;
+    padding: 30px;
     overflow-y: auto;
-    background: #ffffff;
-    border-right: 2px solid #ecf0f1;
+    border-right: 1px solid #eee;
 }
 
 #map-regione {
-    flex: 1;
-    background-color: #ffffff;
-    /* Sfondo bianco anche per la mappa regionale */
+    flex: 2;
+    /* Diamo più spazio alla mappa regionale rispetto alla tabella */
+    background-color: #ffffff !important;
 }
 
-/* Estetica base della tabella */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-th,
-td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-    text-align: left;
-}
-
-th {
-    background-color: #f1f2f6;
-    font-weight: bold;
-    color: #2c3e50;
+/* Pulizia Leaflet */
+.leaflet-container {
+    background: #fff !important;
+    outline: 0;
 }
