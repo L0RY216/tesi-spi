@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indice SPI - Mappa Interattiva</title>
+    <title>Dashboard SPI - Potenziale Fotovoltaico</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
 
-    <h1>Potenziale Fotovoltaico Italiano (SPI)</h1>
-    <div id="mappa-spi"></div>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <h2>Parametri Indice</h2>
+            <hr>
+            <div class="control-group">
+                <label for="coeff-efficienza">Efficienza Pannelli (%)</label>
+                <input type="number" id="coeff-efficienza" value="20" min="5" max="30">
+            </div>
+            <div class="control-group">
+                <label for="mese-selezionato">Mese di analisi</label>
+                <select id="mese-selezionato">
+                    <option value="annuo">Tutto l'anno</option>
+                    <option value="gen">Gennaio</option>
+                    </select>
+            </div>
+            <p class="info-testo">
+                Modifica i parametri per aggiornare i colori della mappa in tempo reale.
+            </p>
+        </aside>
+
+        <main id="mappa-spi"></main>
+    </div>
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="./js/map.js"></script>
 </body>
-
 </html>

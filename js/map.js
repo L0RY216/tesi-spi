@@ -1,9 +1,18 @@
-// 1. Inizializzo la mappa e la centro sull'Italia
-const map = L.map('mappa-spi').setView([41.902, 12.496], 6); // Coordinate di Roma, Zoom 6
+// Definizione dei confini dell'Italia [Sud-Ovest, Nord-Est]
+const sudOvest = L.latLng(35.0, 6.0);
+const nordEst = L.latLng(47.5, 19.0);
+const boundsItalia = L.latLngBounds(sudOvest, nordEst);
 
-// 2. Aggiungo i "Mosaici" visivi della mappa (uso OpenStreetMap, gratis e affidabile)
+const map = L.map('mappa-spi', {
+    center: [42.0, 12.5],
+    zoom: 6,
+    minZoom: 6, // Impedisce di rimpicciolire troppo la mappa
+    maxBounds: boundsItalia, // Blocca lo spostamento fuori dall'Italia
+    maxBoundsViscosity: 1.0 // Rende i confini "solidi" (la mappa rimbalza indietro)
+});
+
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
+    attribution: '© OpenStreetMap'
 }).addTo(map);
 
 // 3. Funzione per scaricare i nostri dati e metterli sulla mappa
