@@ -69,3 +69,10 @@ html {
     background: #fff !important;
     outline: 0;
 }
+
+/* Rimuove il rettangolo nero di focus quando si clicca una provincia */
+path.leaflet-interactive:focus,
+path:focus,
+svg:focus {
+    outline: none !important;
+}
