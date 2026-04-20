@@ -4,7 +4,7 @@ const mapItalia = L.map('map-italia', {
 }).setView([41.5, 12.5], 6);
 
 const mapRegione = L.map('map-regione', {
-    zoomControl: true, dragging: true
+    zoomControl: false, dragging: false, scrollWheelZoom: false, doubleClickZoom: false, touchZoom: false
 }).setView([42.0, 12.5], 7);
 
 let layerProvinceAttive = null;
@@ -26,6 +26,8 @@ async function init() {
                 l.on('click', () => mostraDettaglio(f.properties.reg_name));
             }
         }).addTo(mapItalia);
+        // lasciamo 40 pixel di margine (padding) da ogni lato
+        mapItalia.fitBounds(layerItalia.getBounds(), { padding: [30, 30] });
     } catch (e) { console.error(e); }
 }
 

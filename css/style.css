@@ -19,15 +19,8 @@ html {
 }
 
 /* --- PARTE SOPRA --- */
-.top-half {
-    display: flex;
-    height: 100vh;
-    /* La prima schermata occupa tutto il monitor */
-    width: 100%;
-}
-
 .sidebar {
-    width: 300px;
+    width: 35%;
     background: #2c3e50;
     color: white;
     padding: 20px;
@@ -35,33 +28,22 @@ html {
 }
 
 #map-italia {
-    flex-grow: 1;
+    width: 65%;
     background-color: #ffffff !important;
 }
 
 /* --- PARTE SOTTO --- */
-.bottom-half {
-    display: flex;
-    height: 100vh;
-    /* Anche il dettaglio occupa una schermata intera sotto */
-    border-top: 5px solid #2c3e50;
-    background: #ffffff;
-}
-
-.nascosto {
-    display: none !important;
-}
-
 .pannello-tabella {
-    flex: 1;
+    width: 40%;
+    flex: none;
     padding: 30px;
     overflow-y: auto;
     border-right: 1px solid #eee;
 }
 
 #map-regione {
-    flex: 2;
-    /* Diamo più spazio alla mappa regionale rispetto alla tabella */
+    width: 60%;
+    flex: none;
     background-color: #ffffff !important;
 }
 
