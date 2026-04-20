@@ -1,52 +1,40 @@
-// Definizione dei confini dell'Italia [Sud-Ovest, Nord-Est]
-const sudOvest = L.latLng(35.0, 6.0);
-const nordEst = L.latLng(47.5, 19.0);
-const boundsItalia = L.latLngBounds(sudOvest, nordEst);
+// 1. Inizializzo Mappa 1 (Italia)
+const mapItalia = L.map('map-italia').setView([42.0, 12.5], 6);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(mapItalia);
 
-const map = L.map('mappa-spi', {
-    center: [42.0, 12.5],
-    zoom: 6,
-    minZoom: 6, // Impedisce di rimpicciolire troppo la mappa
-    maxBounds: boundsItalia, // Blocca lo spostamento fuori dall'Italia
-    maxBoundsViscosity: 1.0 // Rende i confini "solidi" (la mappa rimbalza indietro)
-});
+// 2. Inizializzo Mappa 2 (Regione - Vuota per ora)
+const mapRegione = L.map('map-regione').setView([42.0, 12.5], 6);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(mapRegione);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap'
-}).addTo(map);
-
-// 3. Funzione per scaricare i nostri dati e metterli sulla mappa
-async function caricaDati() {
-    try {
-        // Vado a leggere il file JSON che abbiamo creato con Node.js
-        const response = await fetch('./data/irradiazione.json');
-        const datiProvincie = await response.json();
-
-        // 4. Ciclo su ogni provincia del file JSON
-        for (const sigla in datiProvincie) {
-            const provincia = datiProvincie[sigla];
-
-            // Calcolo l'irradiazione totale annuale sommando i mesi
-            let totaleAnnuo = 0;
-            for (const mese in provincia.irradiazione) {
-                totaleAnnuo += provincia.irradiazione[mese];
-            }
-
-            // 5. Creo il "Segnaposto" sulla mappa
-            const marker = L.marker([provincia.lat, provincia.lon]).addTo(map);
-
-            // 6. Aggiungo il popup che appare cliccando sul segnaposto
-            const testoPopup = `
-                <b>${provincia.nome} (${sigla})</b><br>
-                Irradiazione Annua: ${Math.round(totaleAnnuo)} kWh/m²
-            `;
-            marker.bindPopup(testoPopup);
-        }
-
-    } catch (error) {
-        console.error("Errore nel caricamento dei dati:", error);
-    }
+// --- SIMULAZIONE DATI (Da sostituire con il file GeoJSON vero) ---
+async function setupMappa() {
+    
+    // Per ora mettiamo un click finto per simulare l'interazione
+    mapItalia.on('click', function(e) {
+        mostraDettaglioRegione("Toscana", e.latlng);
+    });
 }
 
-// Faccio partire la funzione
-caricaDati();
+// 3. Funzione scatenata dal click su una regione
+function mostraDettaglioRegione(nomeRegione, coordinate) {
+    // A. Rivelo il blocco nascosto
+    const blocco = document.getElementById('blocco-dettaglio');
+    blocco.classList.remove('nascosto');
+
+    // B. TRUCCO TECNICO: Dico a Leaflet 2 di ricalcolare le sue dimensioni ora che è visibile
+    mapRegione.invalidateSize();
+
+    // C. Aggiorno il titolo della tabella
+    document.getElementById('nome-regione-titolo').innerText = "Dettaglio " + nomeRegione;
+
+    // D. Popolo la tabella (Dati finti per ora)
+    document.getElementById('corpo-tabella').innerHTML = `
+        <tr><td>Massa-Carrara</td><td>1450 kWh</td></tr>
+        <tr><td>Lucca</td><td>1420 kWh</td></tr>
+    `;
+
+    // E. Sposto la Mappa 2 sulla regione cliccata
+    mapRegione.setView(coordinate, 8);
+}
+
+setupMappa();

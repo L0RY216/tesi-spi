@@ -1,60 +1,81 @@
-* {
-    box-sizing: border-box;
-}
-
 body,
 html {
     margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    font-family: sans-serif;
 }
 
-.dashboard {
+.app-container {
     display: flex;
-    /* Attiva il layout a colonne */
     height: 100vh;
-    /* Occupa tutta l'altezza dello schermo */
-    width: 100vw;
 }
 
 .sidebar {
-    flex: 1;
-    /* Prende 1 parte dello spazio */
-    background-color: #2c3e50;
+    width: 300px;
+    background: #2c3e50;
     color: white;
-    padding: 25px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    /* Sta sopra la mappa */
+    padding: 20px;
+    flex-shrink: 0;
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    /* Impila mappa Italia e blocco dettaglio uno sopra l'altro */
+    height: 100vh;
+}
+
+/* La mappa dell'Italia prende lo spazio disponibile */
+#map-italia {
+    flex-grow: 1;
+    min-height: 40vh;
+}
+
+/* Il blocco dettaglio appare sotto, alto il 40% dello schermo */
+#blocco-dettaglio {
+    display: flex;
+    /* Affianca tabella e mappa regionale */
+    height: 40vh;
+    background: #fff;
+    border-top: 3px solid #34495e;
+}
+
+/* La classe per nascondere il blocco all'avvio */
+.nascosto {
+    display: none !important;
+}
+
+/* Stile per la metà sinistra del blocco (Tabella) */
+.pannello-tabella {
+    flex: 1;
+    /* Prende metà spazio */
+    padding: 20px;
     overflow-y: auto;
+    /* Scroll se ci sono tante province */
 }
 
-#mappa-spi {
-    flex: 2;
-    /* Prende 2 parti dello spazio (quindi circa i 2/3) */
-    background-color: #e5e5e5;
+/* Stile per la metà destra del blocco (Mappa 2) */
+#map-regione {
+    flex: 1;
+    /* Prende metà spazio */
+    background: #ecf0f1;
 }
 
-.control-group {
-    margin-bottom: 20px;
-}
-
-.control-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 0.9em;
-}
-
-.control-group input,
-.control-group select {
+/* Estetica della tabella */
+table {
     width: 100%;
-    padding: 8px;
-    border-radius: 4px;
-    border: none;
+    border-collapse: collapse;
 }
 
-h2 {
-    margin-top: 0;
-    color: #ecf0f1;
+th,
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f8f9fa;
 }
