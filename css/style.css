@@ -2,13 +2,27 @@ body,
 html {
     margin: 0;
     height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    /* Sfondo generale bianco */
     overflow: hidden;
-    font-family: sans-serif;
+    /* Niente barre di scorrimento laterali */
 }
 
 .app-container {
     display: flex;
+    flex-direction: column;
+    /* Impila Top e Bottom */
     height: 100vh;
+}
+
+/* --- PARTE SOPRA --- */
+.top-half {
+    display: flex;
+    flex: 1;
+    /* Occupa tutto lo spazio disponibile... */
+    transition: all 0.3s ease;
+    /* ...finché non appare la parte sotto */
 }
 
 .sidebar {
@@ -17,65 +31,66 @@ html {
     color: white;
     padding: 20px;
     flex-shrink: 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 }
 
-.main-content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    /* Impila mappa Italia e blocco dettaglio uno sopra l'altro */
-    height: 100vh;
-}
-
-/* La mappa dell'Italia prende lo spazio disponibile */
 #map-italia {
     flex-grow: 1;
-    min-height: 40vh;
+    background-color: #ffffff;
+    /* SFONDO BIANCO (Niente mari o stati esteri) */
 }
 
-/* Il blocco dettaglio appare sotto, alto il 40% dello schermo */
-#blocco-dettaglio {
+/* Rimuovo il bordino grigio di default che Leaflet mette intorno alle mappe */
+.leaflet-container {
+    background: #ffffff !important;
+}
+
+/* --- PARTE SOTTO --- */
+.bottom-half {
     display: flex;
-    /* Affianca tabella e mappa regionale */
-    height: 40vh;
-    background: #fff;
-    border-top: 3px solid #34495e;
+    height: 45vh;
+    /* Quando è aperta, occupa il 45% dello schermo in basso */
+    border-top: 4px solid #2c3e50;
+    /* Linea di separazione netta */
+    background: #f8f9fa;
 }
 
-/* La classe per nascondere il blocco all'avvio */
 .nascosto {
     display: none !important;
+    /* Mantiene la parte sotto invisibile finché non clicchi */
 }
 
-/* Stile per la metà sinistra del blocco (Tabella) */
 .pannello-tabella {
     flex: 1;
-    /* Prende metà spazio */
     padding: 20px;
     overflow-y: auto;
-    /* Scroll se ci sono tante province */
+    background: #ffffff;
+    border-right: 2px solid #ecf0f1;
 }
 
-/* Stile per la metà destra del blocco (Mappa 2) */
 #map-regione {
     flex: 1;
-    /* Prende metà spazio */
-    background: #ecf0f1;
+    background-color: #ffffff;
+    /* Sfondo bianco anche per la mappa regionale */
 }
 
-/* Estetica della tabella */
+/* Estetica base della tabella */
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 15px;
 }
 
 th,
 td {
-    padding: 10px;
+    padding: 12px;
     border-bottom: 1px solid #ddd;
     text-align: left;
 }
 
 th {
-    background-color: #f8f9fa;
+    background-color: #f1f2f6;
+    font-weight: bold;
+    color: #2c3e50;
 }
