@@ -4,7 +4,7 @@ const mapItalia = L.map('map-italia', {
 }).setView([41.5, 12.5], 7);
 
 const mapRegione = L.map('map-regione', {
-    zoomControl: false, dragging: false, scrollWheelZoom: false, doubleClickZoom: false, touchZoom: false
+    zoomControl: true, dragging: false, scrollWheelZoom: false, doubleClickZoom: false, touchZoom: false
 }).setView([42.0, 12.5], 7);
 
 let layerProvinceAttive = null;

@@ -7,6 +7,7 @@
     <title>SPI - Analisi Potenziale</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
 </head>
 
 <body>
@@ -25,7 +26,66 @@
             <aside class="sidebar">
                 <h2>Parametri SPI</h2>
                 <div id="controls">
-                    <p>Seleziona i parametri per ricalcolare l'indice.</p>
+                    <p class="istruzioni">Seleziona i parametri per ricalcolare l'indice.</p>
+
+                    <div class="parametro-row">
+                        <span class="param-label">Irradiazione Solare</span>
+                        <label class="switch">
+                            <input type="checkbox" id="toggle-irrad" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <div id="blocco-mese" class="parametro-sub-row">
+                        <label for="mese-select">Seleziona Mese:</label>
+                        <select id="mese-select">
+                            <option value="gen" selected>Gennaio</option>
+                            <option value="feb">Febbraio</option>
+                            <option value="mar">Marzo</option>
+                            <option value="apr">Aprile</option>
+                            <option value="mag">Maggio</option>
+                            <option value="giu">Giugno</option>
+                            <option value="lug">Luglio</option>
+                            <option value="ago">Agosto</option>
+                            <option value="set">Settembre</option>
+                            <option value="ott">Ottobre</option>
+                            <option value="nov">Novembre</option>
+                            <option value="dic">Dicembre</option>
+                        </select>
+                    </div>
+
+                    <div class="parametro-row">
+                        <span class="param-label">Temperatura Media</span>
+                        <label class="switch">
+                            <input type="checkbox" id="toggle-temp">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <button id="btn-conferma">Calcola Indice sulla Mappa</button>
+
+                    <div id="blocco-classifica">
+                        <h3>Ranking Regioni</h3>
+                        <div class="classifica-grid">
+                            <div class="top-3">
+                                <h4>Top 3 <span class="freccia-su">▲</span></h4>
+                                <ol id="lista-top">
+                                    <li>-</li>
+                                    <li>-</li>
+                                    <li>-</li>
+                                </ol>
+                            </div>
+                            <div class="flop-3">
+                                <h4>Flop 3 <span class="freccia-giu">▼</span></h4>
+                                <ol id="lista-flop">
+                                    <li>-</li>
+                                    <li>-</li>
+                                    <li>-</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </aside>
             <main id="map-italia"></main>
@@ -52,6 +112,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="./js/map.js"></script>
+    <script src="./js/sidebar.js"></script>
 </body>
 
 </html>
