@@ -1,13 +1,9 @@
-/* --- RESET E SCROLL --- */
 body,
 html {
     margin: 0;
     height: auto;
-    /* Permettiamo alla pagina di crescere in altezza */
     overflow-x: hidden;
-    /* Niente scorrimento orizzontale */
     overflow-y: auto;
-    /* Permettiamo lo scorrimento verticale */
     font-family: 'Segoe UI', sans-serif;
     background-color: #ffffff;
 }
@@ -18,11 +14,60 @@ html {
     width: 100%;
 }
 
-#blocco-titolo{
-    padding: 20px;
-    background-color: #7a7f84;
+/* --- HEADER DASHBOARD (Blocco Titolo) --- */
+#blocco-titolo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 30px;
+    background-color: #1a252f;
+    color: #ecf0f1;
+    border-bottom: 3px solid #3498db;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    /* Lo tiene sopra le mappe */
+}
+
+.titolo-sinistra {
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+}
+
+.titolo-sinistra h1 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Un'etichetta (badge) per dare un aspetto da software professionale */
+.badge {
+    background-color: #3498db;
     color: white;
-    text-align: center;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.menu-destra {
+    text-align: right;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu-destra p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #bdc3c7;
+}
+
+.menu-destra strong {
+    color: #ffffff;
 }
 
 /* --- PARTE SOPRA --- */
@@ -48,7 +93,7 @@ html {
 /* --- PARTE SOTTO --- */
 .bottom-half {
     display: flex;
-    height: 100vh;
+    height: 85vh;
     border-top: 5px solid #2c3e50;
     background: #ffffff;
 }

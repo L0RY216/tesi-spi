@@ -35,8 +35,8 @@ function mostraDettaglio(nomeRegione) {
     const sezioneDettaglio = document.getElementById('blocco-dettaglio');
     sezioneDettaglio.classList.remove('nascosto');
 
-    // 1. Scorrimento verso il basso
-    sezioneDettaglio.scrollIntoView({ behavior: 'smooth' });
+    // 1. Scorrimento verso il basso allineato al fondo
+    sezioneDettaglio.scrollIntoView({ behavior: 'smooth', block: 'end' });
 
     // 2. Aggiorno testo
     document.getElementById('nome-regione-titolo').innerText = "Regione: " + nomeRegione;
