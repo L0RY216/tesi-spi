@@ -23,52 +23,44 @@
         </header>
 
         <div class="top-half">
-            <div class="parameters-container">
-                <h3>Pesi dell'Indice SPI</h3>
-                <p class="instruction-text">
-                    <em>Nota: La somma totale dei pesi deve essere esattamente
-                        pari al <strong>100%</strong> per avviare il calcolo.</em>
-                </p>
+            <aside class="sidebar">
+                <div class="parameters-container">
+                    <h3>Pesi dell'Indice SPI</h3>
+                    <p class="instruction-text">
+                        <em>Nota: La somma totale dei pesi deve essere esattamente pari al 100% per avviare il
+                            calcolo.</em>
+                    </p>
 
-                <div class="parameter-item">
-                    <label for="w_sole">Irradiazione Solare</label>
-                    <input type="range" id="w_sole" class="weight-slider" min="0" max="100" value="40">
-                    <span class="weight-val" id="val_sole">40%</span>
+                    <div class="parameter-item">
+                        <label for="w_irrad">Irradiazione Solare</label>
+                        <input type="range" id="w_irrad" class="weight-slider" min="0" max="100" value="40">
+                        <span class="weight-val" id="val_irrad">40%</span>
+                    </div>
+
+                    <div class="parameter-item">
+                        <label for="w_reddito">Reddito Medio</label>
+                        <input type="range" id="w_reddito" class="weight-slider" min="0" max="100" value="30">
+                        <span class="weight-val" id="val_reddito">30%</span>
+                    </div>
+
+                    <div class="parameter-item">
+                        <label for="w_tecnico">Edifici Bassi</label>
+                        <input type="range" id="w_edifici" class="weight-slider" min="0" max="100" value="30">
+                        <span class="weight-val" id="val_edifici">30%</span>
+                    </div>
+
+                    <div class="total-weight-container">
+                        <strong>Totale Pesi: <span id="total-weight" style="color: green;">100%</span></strong>
+                    </div>
+
+                    <button id="calculate-btn" class="primary-btn">Calcola Indice sulla Mappa</button>
                 </div>
 
-                <div class="parameter-item">
-                    <label for="w_soldi">Reddito Medio</label>
-                    <input type="range" id="w_soldi" class="weight-slider" min="0" max="100" value="30">
-                    <span class="weight-val" id="val_soldi">30%</span>
+                <div id="ranking-container">
+                    <h3>Ranking Regioni</h3>
+                    <ul id="regions-list"></ul>
                 </div>
-
-                <div class="parameter-item">
-                    <label for="w_tecnico">Quota di abitazioni in edifici bassi</label>
-                    <input type="range" id="w_tecnico" class="weight-slider" min="0" max="100" value="30">
-                    <span class="weight-val" id="val_tecnico">30%</span>
-                </div>
-
-                <div class="total-weight-container" style="margin-bottom: 15px; text-align: right;">
-                    <strong>Totale Pesi: <span id="total-weight" style="color: green;">100%</span></strong>
-                </div>
-
-                <button id="calculate-btn" class="primary-btn">Calcola Indice sulla Mappa</button>
-            </div>
-
-            <div id="month-selector-container" class="month-selector" style="display: none; margin-top: 20px;">
-                <h4>Dettaglio Mensile Irradiazione</h4>
-                <div class="month-grid">
-                    <label><input type="radio" name="month" value="gen"> Gen</label>
-                    <label><input type="radio" name="month" value="feb"> Feb</label>
-                    <label><input type="radio" name="month" value="annuo" checked> Annuo</label>
-                </div>
-            </div>
-
-            <div id="ranking-container">
-                <h3>Ranking Regioni</h3>
-                <ul id="regions-list">
-                </ul>
-            </div>
+            </aside>
 
             <main id="map-italia"></main>
         </div>

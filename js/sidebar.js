@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     // 1. RIFERIMENTI AGLI ELEMENTI UI
-    const wSole = document.getElementById('w_sole');
-    const wSoldi = document.getElementById('w_soldi');
-    const wTecnico = document.getElementById('w_tecnico');
+    const wIrrad = document.getElementById('w_irrad');
+    const wReddito = document.getElementById('w_reddito');
+    const wEdifici = document.getElementById('w_edifici');
 
-    const valSole = document.getElementById('val_sole');
-    const valSoldi = document.getElementById('val_soldi');
-    const valTecnico = document.getElementById('val_tecnico');
+    const valIrrad = document.getElementById('val_irrad');
+    const valReddito = document.getElementById('val_reddito');
+    const valEdifici = document.getElementById('val_edifici');
 
     const totalWeightDisplay = document.getElementById('total-weight');
     const calculateBtn = document.getElementById('calculate-btn');
@@ -14,13 +14,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 2. LOGICA DI CONTROLLO PESI
     function controllaPesi() {
-        const v1 = parseInt(wSole.value);
-        const v2 = parseInt(wSoldi.value);
-        const v3 = parseInt(wTecnico.value);
+        const v1 = parseInt(wIrrad.value);
+        const v2 = parseInt(wReddito.value);
+        const v3 = parseInt(wEdifici.value);
 
-        valSole.textContent = v1 + '%';
-        valSoldi.textContent = v2 + '%';
-        valTecnico.textContent = v3 + '%';
+        valIrrad.textContent = v1 + '%';
+        valReddito.textContent = v2 + '%';
+        valEdifici.textContent = v3 + '%';
 
         const somma = v1 + v2 + v3;
         totalWeightDisplay.textContent = somma + '%';
@@ -55,24 +55,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Applichiamo i pesi (w/100) e sommiamo
         const punteggioFinale = (
-            (scoreIrrad * (pesi.sole / 100)) +
-            (scoreReddito * (pesi.soldi / 100)) +
-            (scoreEdifici * (pesi.tecnico / 100))
+            (scoreIrrad * (pesi.irrad / 100)) +
+            (scoreReddito * (pesi.reddito / 100)) +
+            (scoreEdifici * (pesi.edifici / 100))
         ) * 100; // Riportiamo in scala 0-100 per i colori della mappa
 
         return punteggioFinale;
     };
 
     // 4. GESTIONE EVENTI
-    [wSole, wSoldi, wTecnico].forEach(s => s.addEventListener('input', controllaPesi));
+    [wIrrad, wReddito, wEdifici].forEach(s => s.addEventListener('input', controllaPesi));
 
     calculateBtn.addEventListener('click', function () {
         monthSelector.style.display = 'block';
 
         const pesiAttuali = {
-            sole: parseInt(wSole.value),
-            soldi: parseInt(wSoldi.value),
-            tecnico: parseInt(wTecnico.value)
+            irrad: parseInt(wIrrad.value),
+            reddito: parseInt(wReddito.value),
+            edifici: parseInt(wEdifici.value)
         };
 
         // Chiamiamo le funzioni di map.js (che scriveremo nel prossimo step)

@@ -155,3 +155,40 @@ ol {
 ol li {
     margin-bottom: 5px;
 }
+
+.parameters-container {
+    padding: 10px;
+    background: #1a252f;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.parameter-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #34495e;
+    padding-bottom: 10px;
+}
+
+.weight-val {
+    font-weight: bold;
+    color: #3498db;
+    text-align: right;
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.primary-btn:hover {
+    background-color: #2980b9;
+}
