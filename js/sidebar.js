@@ -1,55 +1,94 @@
-// --- LOGICA DELLA SIDEBAR E DEI PARAMETRI ---
+document.addEventListener('DOMContentLoaded', function () {
+    // 1. RIFERIMENTI AGLI ELEMENTI UI
+    const wSole = document.getElementById('w_sole');
+    const wSoldi = document.getElementById('w_soldi');
+    const wTecnico = document.getElementById('w_tecnico');
 
-// Elementi della UI
-const toggleIrrad = document.getElementById('toggle-irrad');
-const bloccoMese = document.getElementById('blocco-mese');
-const meseSelect = document.getElementById('mese-select');
-const btnConferma = document.getElementById('btn-conferma');
+    const valSole = document.getElementById('val_sole');
+    const valSoldi = document.getElementById('val_soldi');
+    const valTecnico = document.getElementById('val_tecnico');
 
-// 1. Mostra/Nascondi il mese se l'irradiazione viene spenta/accesa
-toggleIrrad.addEventListener('change', function () {
-    if (this.checked) {
-        bloccoMese.style.display = 'flex';
-    } else {
-        bloccoMese.style.display = 'none';
-    }
-});
+    const totalWeightDisplay = document.getElementById('total-weight');
+    const calculateBtn = document.getElementById('calculate-btn');
+    const monthSelector = document.getElementById('month-selector-container');
 
-// 2. Il click sul bottone CONFERMA
-btnConferma.addEventListener('click', function () {
-    console.log("Bottone Conferma premuto! Calcolo i dati...");
-    eseguiCalcoloIndice();
-});
+    // 2. LOGICA DI CONTROLLO PESI
+    function controllaPesi() {
+        const v1 = parseInt(wSole.value);
+        const v2 = parseInt(wSoldi.value);
+        const v3 = parseInt(wTecnico.value);
 
-// 3. Il cambio del MESE (aggiornamento istantaneo)
-meseSelect.addEventListener('change', function () {
-    console.log("Mese cambiato in: " + this.value + ". Aggiorno istantaneamente!");
-    eseguiCalcoloIndice();
-});
+        valSole.textContent = v1 + '%';
+        valSoldi.textContent = v2 + '%';
+        valTecnico.textContent = v3 + '%';
 
-// 4. La funzione "Motore" che chiameremo quando servirà colorare la mappa
-function eseguiCalcoloIndice() {
-    // Leggo quali parametri sono attivi in questo momento
-    const irradiazioneAttiva = toggleIrrad.checked;
-    const meseScelto = meseSelect.value;
+        const somma = v1 + v2 + v3;
+        totalWeightDisplay.textContent = somma + '%';
 
-    // TODO: Qui, nel prossimo step, inseriremo la matematica vera!
-    // Per ora facciamo finta di aggiornare la classifica per farti vedere che funziona
-    if (irradiazioneAttiva) {
-        document.getElementById('lista-top').innerHTML = `<li>Sicilia</li><li>Puglia</li><li>Sardegna</li>`;
-        document.getElementById('lista-flop').innerHTML = `<li>Valle d'Aosta</li><li>Trentino</li><li>Lombardia</li>`;
-    } else {
-        document.getElementById('lista-top').innerHTML = `<li>-</li><li>-</li><li>-</li>`;
-        document.getElementById('lista-flop').innerHTML = `<li>-</li><li>-</li><li>-</li>`;
+        if (somma === 100) {
+            calculateBtn.disabled = false;
+            calculateBtn.style.opacity = '1';
+            totalWeightDisplay.style.color = 'green';
+        } else {
+            calculateBtn.disabled = true;
+            calculateBtn.style.opacity = '0.5';
+            totalWeightDisplay.style.color = 'red';
+        }
     }
 
-    // Un piccolo feedback visivo sul bottone
-    const testoOriginale = btnConferma.innerText;
-    btnConferma.innerText = "Dati Aggiornati!";
-    btnConferma.style.backgroundColor = "#2ecc71";
+    // 3. LA FUNZIONE DI CALCOLO
+    const MAX_REDDITO_ASSOLUTO = 30742;
+    const MAX_IRRAD_ANNUALE = 34999;
+    const MAX_IRRAD_MENSILE = 249;
 
-    setTimeout(() => {
-        btnConferma.innerText = testoOriginale;
-        btnConferma.style.backgroundColor = "#3498db";
-    }, 1500);
-}
+    w
+    // Questa funzione trasforma i dati della provincia/regione in un punteggio 0-100
+    window.calcolaPunteggioSPI = function (item, pesi) {
+        const meseSelezionato = document.querySelector('input[name="month"]:checked').value;
+
+        // Normalizzazione: portiamo tutto in scala 0-1
+        const maxIrrad = (meseSelezionato === 'annuo') ? MAX_IRRAD_ANNUALE : MAX_IRRAD_MENSILE;
+        const scoreIrrad = (item.irradiazione[meseSelezionato] / maxIrrad);
+
+        const scoreReddito = (item.reddito / MAX_REDDITO_ASSOLUTO);
+        const scoreEdifici = (item.edifici_bassi / 100);
+
+        // Applichiamo i pesi (w/100) e sommiamo
+        const punteggioFinale = (
+            (scoreIrrad * (pesi.sole / 100)) +
+            (scoreReddito * (pesi.soldi / 100)) +
+            (scoreEdifici * (pesi.tecnico / 100))
+        ) * 100; // Riportiamo in scala 0-100 per i colori della mappa
+
+        return punteggioFinale;
+    };
+
+    // 4. GESTIONE EVENTI
+    [wSole, wSoldi, wTecnico].forEach(s => s.addEventListener('input', controllaPesi));
+
+    calculateBtn.addEventListener('click', function () {
+        monthSelector.style.display = 'block';
+
+        const pesiAttuali = {
+            sole: parseInt(wSole.value),
+            soldi: parseInt(wSoldi.value),
+            tecnico: parseInt(wTecnico.value)
+        };
+
+        // Chiamiamo le funzioni di map.js (che scriveremo nel prossimo step)
+        if (typeof aggiornaMappaRegioni === "function") {
+            aggiornaMappaRegioni(pesiAttuali);
+        }
+    });
+
+    // Se l'utente cambia il mese dopo aver già calcolato, aggiorna tutto
+    document.querySelectorAll('input[name="month"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            if (monthSelector.style.display === 'block') {
+                calculateBtn.click();
+            }
+        });
+    });
+
+    controllaPesi(); // Inizializzazione al caricamento
+});

@@ -18,76 +18,58 @@
                 <span class="badge">Analisi Geospaziale</span>
             </div>
             <div class="menu-destra">
-                <p class="fonte-dati">Data: <strong>PVGIS-SARAH | ISTAT</strong></p>
+                <p class="fonte-dati">Data: <strong>PVGIS-SARAH | ISTAT | MEF</strong></p>
             </div>
         </header>
 
         <div class="top-half">
-            <aside class="sidebar">
-                <h2>Parametri SPI</h2>
-                <div id="controls">
-                    <p class="istruzioni">Seleziona i parametri per ricalcolare l'indice.</p>
+            <div class="parameters-container">
+                <h3>Pesi dell'Indice SPI</h3>
+                <p class="instruction-text">
+                    <em>Nota: La somma totale dei pesi deve essere esattamente
+                        pari al <strong>100%</strong> per avviare il calcolo.</em>
+                </p>
 
-                    <div class="parametro-row">
-                        <span class="param-label">Irradiazione Solare</span>
-                        <label class="switch">
-                            <input type="checkbox" id="toggle-irrad" checked>
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-
-                    <div id="blocco-mese" class="parametro-sub-row">
-                        <label for="mese-select">Seleziona Mese:</label>
-                        <select id="mese-select">
-                            <option value="gen" selected>Gennaio</option>
-                            <option value="feb">Febbraio</option>
-                            <option value="mar">Marzo</option>
-                            <option value="apr">Aprile</option>
-                            <option value="mag">Maggio</option>
-                            <option value="giu">Giugno</option>
-                            <option value="lug">Luglio</option>
-                            <option value="ago">Agosto</option>
-                            <option value="set">Settembre</option>
-                            <option value="ott">Ottobre</option>
-                            <option value="nov">Novembre</option>
-                            <option value="dic">Dicembre</option>
-                        </select>
-                    </div>
-
-                    <div class="parametro-row">
-                        <span class="param-label">Temperatura Media</span>
-                        <label class="switch">
-                            <input type="checkbox" id="toggle-temp">
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-
-                    <button id="btn-conferma">Calcola Indice sulla Mappa</button>
-
-                    <div id="blocco-classifica">
-                        <h3>Ranking Regioni</h3>
-                        <div class="classifica-grid">
-                            <div class="top-3">
-                                <h4>Top 3 <span class="freccia-su">▲</span></h4>
-                                <ol id="lista-top">
-                                    <li>-</li>
-                                    <li>-</li>
-                                    <li>-</li>
-                                </ol>
-                            </div>
-                            <div class="flop-3">
-                                <h4>Flop 3 <span class="freccia-giu">▼</span></h4>
-                                <ol id="lista-flop">
-                                    <li>-</li>
-                                    <li>-</li>
-                                    <li>-</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-
+                <div class="parameter-item">
+                    <label for="w_sole">Irradiazione Solare</label>
+                    <input type="range" id="w_sole" class="weight-slider" min="0" max="100" value="40">
+                    <span class="weight-val" id="val_sole">40%</span>
                 </div>
-            </aside>
+
+                <div class="parameter-item">
+                    <label for="w_soldi">Reddito Medio</label>
+                    <input type="range" id="w_soldi" class="weight-slider" min="0" max="100" value="30">
+                    <span class="weight-val" id="val_soldi">30%</span>
+                </div>
+
+                <div class="parameter-item">
+                    <label for="w_tecnico">Quota di abitazioni in edifici bassi</label>
+                    <input type="range" id="w_tecnico" class="weight-slider" min="0" max="100" value="30">
+                    <span class="weight-val" id="val_tecnico">30%</span>
+                </div>
+
+                <div class="total-weight-container" style="margin-bottom: 15px; text-align: right;">
+                    <strong>Totale Pesi: <span id="total-weight" style="color: green;">100%</span></strong>
+                </div>
+
+                <button id="calculate-btn" class="primary-btn">Calcola Indice sulla Mappa</button>
+            </div>
+
+            <div id="month-selector-container" class="month-selector" style="display: none; margin-top: 20px;">
+                <h4>Dettaglio Mensile Irradiazione</h4>
+                <div class="month-grid">
+                    <label><input type="radio" name="month" value="gen"> Gen</label>
+                    <label><input type="radio" name="month" value="feb"> Feb</label>
+                    <label><input type="radio" name="month" value="annuo" checked> Annuo</label>
+                </div>
+            </div>
+
+            <div id="ranking-container">
+                <h3>Ranking Regioni</h3>
+                <ul id="regions-list">
+                </ul>
+            </div>
+
             <main id="map-italia"></main>
         </div>
 

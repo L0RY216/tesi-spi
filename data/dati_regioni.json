@@ -1,0 +1,402 @@
+{
+  "Sicilia": {
+    "nome": "Sicilia",
+    "irradiazione": {
+      "gen": 78.37,
+      "feb": 96.9,
+      "mar": 154,
+      "apr": 176.65,
+      "mag": 166.5,
+      "giu": 210.09,
+      "lug": 246.27,
+      "ago": 215.82,
+      "set": 157.14,
+      "ott": 131.24,
+      "nov": 83.85,
+      "dic": 66.04,
+      "annuo": 33890
+    },
+    "reddito": 17732,
+    "edifici_bassi": 0
+  },
+  "Piemonte": {
+    "nome": "Piemonte",
+    "irradiazione": {
+      "gen": 49.5,
+      "feb": 75.5,
+      "mar": 127.49,
+      "apr": 163.41,
+      "mag": 167.61,
+      "giu": 194.39,
+      "lug": 210.41,
+      "ago": 188.5,
+      "set": 130.96,
+      "ott": 83.64,
+      "nov": 59.89,
+      "dic": 42.69,
+      "annuo": 27790
+    },
+    "reddito": 23185,
+    "edifici_bassi": 0
+  },
+  "Marche": {
+    "nome": "Marche",
+    "irradiazione": {
+      "gen": 49.85,
+      "feb": 73.59,
+      "mar": 125.86,
+      "apr": 143.29,
+      "mag": 166.04,
+      "giu": 200.57,
+      "lug": 223.76,
+      "ago": 199.39,
+      "set": 138.28,
+      "ott": 100.99,
+      "nov": 58.57,
+      "dic": 51.01,
+      "annuo": 28758
+    },
+    "reddito": 21408,
+    "edifici_bassi": 0
+  },
+  "Valle d'Aosta": {
+    "nome": "Valle d'Aosta",
+    "irradiazione": {
+      "gen": 48.12,
+      "feb": 84.63,
+      "mar": 103.23,
+      "apr": 167.7,
+      "mag": 173.6,
+      "giu": 189.65,
+      "lug": 223.66,
+      "ago": 182.46,
+      "set": 134.9,
+      "ott": 88.77,
+      "nov": 44.22,
+      "dic": 34.63,
+      "annuo": 26718
+    },
+    "reddito": 24179,
+    "edifici_bassi": 0
+  },
+  "Toscana": {
+    "nome": "Toscana",
+    "irradiazione": {
+      "gen": 53.77,
+      "feb": 69.11,
+      "mar": 116.88,
+      "apr": 162.33,
+      "mag": 174.95,
+      "giu": 204.13,
+      "lug": 226.39,
+      "ago": 189.56,
+      "set": 147.81,
+      "ott": 88.65,
+      "nov": 52.85,
+      "dic": 40.42,
+      "annuo": 28941
+    },
+    "reddito": 22580,
+    "edifici_bassi": 0
+  },
+  "Campania": {
+    "nome": "Campania",
+    "irradiazione": {
+      "gen": 59.41,
+      "feb": 80.39,
+      "mar": 124.49,
+      "apr": 145.97,
+      "mag": 148.45,
+      "giu": 205.56,
+      "lug": 238.95,
+      "ago": 203.07,
+      "set": 146.14,
+      "ott": 107.37,
+      "nov": 53.87,
+      "dic": 53.59,
+      "annuo": 30492
+    },
+    "reddito": 18380,
+    "edifici_bassi": 0
+  },
+  "Puglia": {
+    "nome": "Puglia",
+    "irradiazione": {
+      "gen": 61.04,
+      "feb": 84.13,
+      "mar": 138.24,
+      "apr": 156.47,
+      "mag": 174.47,
+      "giu": 206.2,
+      "lug": 238.66,
+      "ago": 210.24,
+      "set": 153.53,
+      "ott": 110.17,
+      "nov": 68.16,
+      "dic": 56.23,
+      "annuo": 31550
+    },
+    "reddito": 17723,
+    "edifici_bassi": 0
+  },
+  "Veneto": {
+    "nome": "Veneto",
+    "irradiazione": {
+      "gen": 45.51,
+      "feb": 69.93,
+      "mar": 118.56,
+      "apr": 149.46,
+      "mag": 165.22,
+      "giu": 198.95,
+      "lug": 206.89,
+      "ago": 176.75,
+      "set": 135.18,
+      "ott": 82.71,
+      "nov": 57.08,
+      "dic": 38.4,
+      "annuo": 27467
+    },
+    "reddito": 23516,
+    "edifici_bassi": 0
+  },
+  "Lombardia": {
+    "nome": "Lombardia",
+    "irradiazione": {
+      "gen": 44.79,
+      "feb": 75.37,
+      "mar": 124.49,
+      "apr": 160.81,
+      "mag": 168.42,
+      "giu": 202.95,
+      "lug": 212.47,
+      "ago": 184.45,
+      "set": 133.92,
+      "ott": 81.38,
+      "nov": 55.89,
+      "dic": 38.27,
+      "annuo": 27689
+    },
+    "reddito": 25092,
+    "edifici_bassi": 0
+  },
+  "Emilia-Romagna": {
+    "nome": "Emilia-Romagna",
+    "irradiazione": {
+      "gen": 43.51,
+      "feb": 74.37,
+      "mar": 127.58,
+      "apr": 160.71,
+      "mag": 170.31,
+      "giu": 203.36,
+      "lug": 222.37,
+      "ago": 187.93,
+      "set": 141.01,
+      "ott": 90.34,
+      "nov": 59.3,
+      "dic": 42.83,
+      "annuo": 28389
+    },
+    "reddito": 24178,
+    "edifici_bassi": 0
+  },
+  "Trentino-Alto Adige": {
+    "nome": "Trentino-Alto Adige",
+    "irradiazione": {
+      "gen": 44.25,
+      "feb": 78.48,
+      "mar": 117.6,
+      "apr": 148.21,
+      "mag": 150.3,
+      "giu": 199.51,
+      "lug": 200.31,
+      "ago": 173.22,
+      "set": 136.41,
+      "ott": 82.36,
+      "nov": 52.32,
+      "dic": 33.15,
+      "annuo": 26350
+    },
+    "reddito": 25142,
+    "edifici_bassi": 0
+  },
+  "Sardegna": {
+    "nome": "Sardegna",
+    "irradiazione": {
+      "gen": 65.59,
+      "feb": 90.27,
+      "mar": 150.47,
+      "apr": 185.19,
+      "mag": 177.21,
+      "giu": 206.44,
+      "lug": 239.84,
+      "ago": 213.05,
+      "set": 160.19,
+      "ott": 117.46,
+      "nov": 67.05,
+      "dic": 60.94,
+      "annuo": 32667
+    },
+    "reddito": 18950,
+    "edifici_bassi": 0
+  },
+  "Molise": {
+    "nome": "Molise",
+    "irradiazione": {
+      "gen": 58.56,
+      "feb": 79.3,
+      "mar": 127.88,
+      "apr": 137.03,
+      "mag": 143.28,
+      "giu": 200.68,
+      "lug": 237.89,
+      "ago": 207.07,
+      "set": 142.38,
+      "ott": 110.94,
+      "nov": 59.93,
+      "dic": 58.63,
+      "annuo": 29593
+    },
+    "reddito": 18143,
+    "edifici_bassi": 0
+  },
+  "Calabria": {
+    "nome": "Calabria",
+    "irradiazione": {
+      "gen": 70.59,
+      "feb": 87.23,
+      "mar": 138.28,
+      "apr": 159.9,
+      "mag": 155.34,
+      "giu": 201.87,
+      "lug": 243.47,
+      "ago": 209.8,
+      "set": 151.72,
+      "ott": 117.6,
+      "nov": 73.12,
+      "dic": 59.47,
+      "annuo": 32013
+    },
+    "reddito": 16942,
+    "edifici_bassi": 0
+  },
+  "Abruzzo": {
+    "nome": "Abruzzo",
+    "irradiazione": {
+      "gen": 54.35,
+      "feb": 79.36,
+      "mar": 130.31,
+      "apr": 137.67,
+      "mag": 152.24,
+      "giu": 200.19,
+      "lug": 229.96,
+      "ago": 200.06,
+      "set": 140.66,
+      "ott": 109.25,
+      "nov": 62.52,
+      "dic": 56.63,
+      "annuo": 29305
+    },
+    "reddito": 20022,
+    "edifici_bassi": 0
+  },
+  "Lazio": {
+    "nome": "Lazio",
+    "irradiazione": {
+      "gen": 58.09,
+      "feb": 83.73,
+      "mar": 126.04,
+      "apr": 158.26,
+      "mag": 161.33,
+      "giu": 209.39,
+      "lug": 234.62,
+      "ago": 203.05,
+      "set": 150.07,
+      "ott": 105.47,
+      "nov": 59.38,
+      "dic": 51.78,
+      "annuo": 30506
+    },
+    "reddito": 21188,
+    "edifici_bassi": 0
+  },
+  "Liguria": {
+    "nome": "Liguria",
+    "irradiazione": {
+      "gen": 51.77,
+      "feb": 65.28,
+      "mar": 124.69,
+      "apr": 158.28,
+      "mag": 188.11,
+      "giu": 203.47,
+      "lug": 216.91,
+      "ago": 190.27,
+      "set": 141.99,
+      "ott": 82.13,
+      "nov": 57.14,
+      "dic": 40.41,
+      "annuo": 28499
+    },
+    "reddito": 22474,
+    "edifici_bassi": 0
+  },
+  "Friuli-Venezia Giulia": {
+    "nome": "Friuli-Venezia Giulia",
+    "irradiazione": {
+      "gen": 39.66,
+      "feb": 66.11,
+      "mar": 106.35,
+      "apr": 137.45,
+      "mag": 165.71,
+      "giu": 199.34,
+      "lug": 201.56,
+      "ago": 165.49,
+      "set": 134.82,
+      "ott": 75.62,
+      "nov": 52.68,
+      "dic": 35.76,
+      "annuo": 26622
+    },
+    "reddito": 23747,
+    "edifici_bassi": 0
+  },
+  "Basilicata": {
+    "nome": "Basilicata",
+    "irradiazione": {
+      "gen": 58.34,
+      "feb": 82.67,
+      "mar": 134.84,
+      "apr": 145.08,
+      "mag": 149.88,
+      "giu": 191.48,
+      "lug": 235.57,
+      "ago": 205.73,
+      "set": 148.1,
+      "ott": 114.31,
+      "nov": 67.25,
+      "dic": 59.36,
+      "annuo": 30129
+    },
+    "reddito": 18309,
+    "edifici_bassi": 0
+  },
+  "Umbria": {
+    "nome": "Umbria",
+    "irradiazione": {
+      "gen": 55.41,
+      "feb": 76.78,
+      "mar": 119.82,
+      "apr": 156.74,
+      "mag": 161.98,
+      "giu": 207.5,
+      "lug": 229.06,
+      "ago": 199.25,
+      "set": 147.01,
+      "ott": 102.59,
+      "nov": 54.72,
+      "dic": 48.45,
+      "annuo": 30028
+    },
+    "reddito": 20947,
+    "edifici_bassi": 0
+  }
+}
