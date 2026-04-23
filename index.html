@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="parameter-item">
-                        <label for="w_tecnico">Edifici Bassi</label>
+                        <label for="w_edifici">Edifici Bassi</label>
                         <input type="range" id="w_edifici" class="weight-slider" min="0" max="100" value="30">
                         <span class="weight-val" id="val_edifici">30%</span>
                     </div>
@@ -54,6 +54,25 @@
                     </div>
 
                     <button id="calculate-btn" class="primary-btn">Calcola Indice sulla Mappa</button>
+                </div>
+
+                <div id="month-selector-container" class="month-selector" style="display: none; margin-top: 20px;">
+                    <h4>Dettaglio Mensile Irradiazione</h4>
+                    <div class="month-grid">
+                        <label><input type="radio" name="month" value="gen"> Gennaio</label>
+                        <label><input type="radio" name="month" value="feb"> Febbraio</label>
+                        <label><input type="radio" name="month" value="mar"> Marzo</label>
+                        <label><input type="radio" name="month" value="apr"> Aprile</label>
+                        <label><input type="radio" name="month" value="mag"> Maggio</label>
+                        <label><input type="radio" name="month" value="giu"> Giugno</label>
+                        <label><input type="radio" name="month" value="lug"> Luglio</label>
+                        <label><input type="radio" name="month" value="ago"> Agosto</label>
+                        <label><input type="radio" name="month" value="set"> Settembre</label>
+                        <label><input type="radio" name="month" value="ott"> Ottobre</label>
+                        <label><input type="radio" name="month" value="nov"> Novembre</label>
+                        <label><input type="radio" name="month" value="dic"> Dicembre</label>
+                        <label><input type="radio" name="month" value="annuo" checked> Annuo</label>
+                    </div>
                 </div>
 
                 <div id="ranking-container">

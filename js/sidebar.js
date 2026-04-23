@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const MAX_IRRAD_ANNUALE = 34999;
     const MAX_IRRAD_MENSILE = 249;
 
-    w
     // Questa funzione trasforma i dati della provincia/regione in un punteggio 0-100
     window.calcolaPunteggioSPI = function (item, pesi) {
         const meseSelezionato = document.querySelector('input[name="month"]:checked').value;
