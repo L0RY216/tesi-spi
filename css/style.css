@@ -82,6 +82,7 @@ html {
     color: white;
     padding: 20px;
     flex-shrink: 0;
+    overflow-y: auto;
 }
 
 #map-italia {

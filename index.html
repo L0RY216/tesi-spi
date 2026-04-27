@@ -27,36 +27,43 @@
                 <div class="parameters-container">
                     <h3>Pesi dell'Indice SPI</h3>
                     <p class="instruction-text">
-                        <em>Nota: La somma totale dei pesi deve essere esattamente pari al 100% per avviare il
+                        <em>Nota: Nella scelta dei parametri la somma totale dei pesi deve essere esattamente pari al
+                            100% per avviare il
                             calcolo.</em>
                     </p>
 
                     <div class="parameter-item">
-                        <label for="w_irrad">Irradiazione Solare</label>
+                        <div class="param-header">
+                            <label for="w_irrad">Irradiazione Solare</label>
+                            <span class="weight-val" id="val_irrad">40%</span>
+                        </div>
                         <input type="range" id="w_irrad" class="weight-slider" min="0" max="100" value="40">
-                        <span class="weight-val" id="val_irrad">40%</span>
                     </div>
 
                     <div class="parameter-item">
-                        <label for="w_reddito">Reddito Medio</label>
+                        <div class="param-header">
+                            <label for="w_reddito">Reddito Medio</label>
+                            <span class="weight-val" id="val_reddito">30%</span>
+                        </div>
                         <input type="range" id="w_reddito" class="weight-slider" min="0" max="100" value="30">
-                        <span class="weight-val" id="val_reddito">30%</span>
                     </div>
 
                     <div class="parameter-item">
-                        <label for="w_edifici">Edifici Bassi</label>
+                        <div class="param-header">
+                            <label for="w_edifici">Edifici Bassi</label>
+                            <span class="weight-val" id="val_edifici">30%</span>
+                        </div>
                         <input type="range" id="w_edifici" class="weight-slider" min="0" max="100" value="30">
-                        <span class="weight-val" id="val_edifici">30%</span>
                     </div>
 
                     <div class="total-weight-container">
-                        <strong>Totale Pesi: <span id="total-weight" style="color: green;">100%</span></strong>
+                        <strong>Totale Pesi: <span id="total-weight">100%</span></strong>
                     </div>
 
                     <button id="calculate-btn" class="primary-btn">Calcola Indice sulla Mappa</button>
                 </div>
 
-                <div id="month-selector-container" class="month-selector" style="display: none; margin-top: 20px;">
+                <div id="month-selector-container" class="month-selector" style="display: none;">
                     <h4>Dettaglio Mensile Irradiazione</h4>
                     <div class="month-grid">
                         <label><input type="radio" name="month" value="gen"> Gennaio</label>

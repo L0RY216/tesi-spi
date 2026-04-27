@@ -160,7 +160,14 @@ ol li {
     padding: 10px;
     background: #1a252f;
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+}
+
+.param-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
 }
 
 .parameter-item {
@@ -174,7 +181,6 @@ ol li {
 .weight-val {
     font-weight: bold;
     color: #3498db;
-    text-align: right;
 }
 
 .primary-btn {
@@ -191,4 +197,68 @@ ol li {
 
 .primary-btn:hover {
     background-color: #2980b9;
+}
+
+.total-weight-container {
+    margin-bottom: 10px;
+    color: green;
+}
+
+/* --- SELETTORE MESI --- */
+.month-selector {
+    background: #1a252f;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.month-selector h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    color: #ecf0f1;
+    text-align: center;
+    border-bottom: 1px solid #34495e;
+    padding-bottom: 10px;
+}
+
+.month-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 10px;
+}
+
+.month-grid label {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #bdc3c7;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.month-grid label:hover {
+    color: #ffffff;
+}
+
+/* Stile per i "pallini" del selettore */
+.month-grid input[type="radio"] {
+    margin: 0 8px 0 0;
+    cursor: pointer;
+    accent-color: #3498db;
+    width: 14px;
+    height: 14px;
+}
+
+/* Diamo risalto all'opzione "Annuo" (l'ultima della lista) */
+.month-grid label:last-child {
+    grid-column: 1 / -1;
+    /* Occupa entrambe le colonne per tutta la larghezza */
+    background: #2c3e50;
+    padding: 10px;
+    border-radius: 6px;
+    justify-content: center;
+    color: #ffffff;
+    font-weight: bold;
+    margin-top: 8px;
 }
