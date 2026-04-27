@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const totalWeightDisplay = document.getElementById('total-weight');
     const calculateBtn = document.getElementById('calculate-btn');
     const monthSelector = document.getElementById('month-selector-container');
+    let calcoloEffettuato = false; // Tiene traccia se il calcolo è stato avviato
 
     // 2. LOGICA DI CONTROLLO PESI
     function controllaPesi() {
@@ -33,6 +34,15 @@ document.addEventListener('DOMContentLoaded', function () {
             calculateBtn.disabled = true;
             calculateBtn.style.opacity = '0.5';
             totalWeightDisplay.style.color = 'red';
+        }
+
+        // GESTIONE VISIBILITÀ SELETTORE MESI
+        if (calcoloEffettuato) {
+            if (v1 > 0) {
+                monthSelector.style.display = 'block';
+            } else {
+                monthSelector.style.display = 'none';
+            }
         }
     }
 
@@ -66,7 +76,8 @@ document.addEventListener('DOMContentLoaded', function () {
     [wIrrad, wReddito, wEdifici].forEach(s => s.addEventListener('input', controllaPesi));
 
     calculateBtn.addEventListener('click', function () {
-        monthSelector.style.display = 'block';
+        calcoloEffettuato = true;
+        controllaPesi();
 
         const pesiAttuali = {
             irrad: parseInt(wIrrad.value),
@@ -78,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (typeof aggiornaMappaRegioni === "function") {
             aggiornaMappaRegioni(pesiAttuali);
         }
+        calcoloEffettuato = false;
     });
 
     // Se l'utente cambia il mese dopo aver già calcolato, aggiorna tutto
