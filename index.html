@@ -27,9 +27,7 @@
                 <div class="parameters-container">
                     <h3>Pesi dell'Indice SPI</h3>
                     <p class="instruction-text">
-                        <em>Nota: Nella scelta dei parametri la somma totale dei pesi deve essere esattamente pari al
-                            100% per avviare il
-                            calcolo.</em>
+                        <em>Nota: Nella scelta dei parametri i pesi impostati vengono normalizzati automaticamente</em>
                     </p>
 
                     <div class="parameter-item">
@@ -54,10 +52,6 @@
                             <span class="weight-val" id="val_edifici">30%</span>
                         </div>
                         <input type="range" id="w_edifici" class="weight-slider" min="0" max="100" value="30">
-                    </div>
-
-                    <div class="total-weight-container">
-                        <strong>Totale Pesi: <span id="total-weight">100%</span></strong>
                     </div>
 
                     <button id="calculate-btn" class="primary-btn">Calcola Indice sulla Mappa</button>

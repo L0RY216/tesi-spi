@@ -199,11 +199,6 @@ ol li {
     background-color: #2980b9;
 }
 
-.total-weight-container {
-    margin-bottom: 10px;
-    color: green;
-}
-
 /* --- SELETTORE MESI --- */
 .month-selector {
     background: #1a252f;
@@ -224,7 +219,7 @@ ol li {
 
 .month-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px 10px;
 }
 

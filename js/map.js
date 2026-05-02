@@ -19,10 +19,11 @@ async function init() {
         datiProvinceGlobali = await resProv.json();
 
         const layerItalia = L.geoJSON(dataReg, {
-            style: { color: "#2c3e50", weight: 1.5, fillColor: "#ecf0f1", fillOpacity: 1 },
+            style: { color: "#2c3e50", weight: 1.5, fillColor: "#c6c6c6", fillOpacity: 1 },
             onEachFeature: (f, l) => {
-                l.on('mouseover', () => l.setStyle({ fillColor: '#3498db' }));
-                l.on('mouseout', () => l.setStyle({ fillColor: '#ecf0f1' }));
+                l.bindTooltip(f.properties.reg_name);
+                l.on('mouseover', () => l.setStyle({ fillColor: '#77c2f3' }));
+                l.on('mouseout', () => l.setStyle({ fillColor: '#c6c6c6' }));
                 l.on('click', () => mostraDettaglio(f.properties.reg_name));
             }
         }).addTo(mapItalia);
@@ -53,11 +54,11 @@ function mostraDettaglio(nomeRegione) {
         };
 
         layerProvinceAttive = L.geoJSON(filtrate, {
-            style: { color: "#2c3e50", weight: 1, fillColor: "#bdc3c7", fillOpacity: 1 },
+            style: { color: "#2c3e50", weight: 1, fillColor: "#c6c6c6", fillOpacity: 1 },
             onEachFeature: (f, l) => {
                 l.bindTooltip(f.properties.prov_name);
-                l.on('mouseover', () => l.setStyle({ fillColor: '#f1c40f' }));
-                l.on('mouseout', () => l.setStyle({ fillColor: '#bdc3c7' }));
+                l.on('mouseover', () => l.setStyle({ fillColor: '#77c2f3' }));
+                l.on('mouseout', () => l.setStyle({ fillColor: '#c6c6c6' }));
             }
         }).addTo(mapRegione);
 

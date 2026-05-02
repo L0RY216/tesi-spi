@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const valReddito = document.getElementById('val_reddito');
     const valEdifici = document.getElementById('val_edifici');
 
-    const totalWeightDisplay = document.getElementById('total-weight');
     const calculateBtn = document.getElementById('calculate-btn');
     const monthSelector = document.getElementById('month-selector-container');
     let calcoloEffettuato = false; // Tiene traccia se il calcolo è stato avviato
@@ -18,23 +17,28 @@ document.addEventListener('DOMContentLoaded', function () {
         const v1 = parseInt(wIrrad.value);
         const v2 = parseInt(wReddito.value);
         const v3 = parseInt(wEdifici.value);
-
-        valIrrad.textContent = v1 + '%';
-        valReddito.textContent = v2 + '%';
-        valEdifici.textContent = v3 + '%';
-
         const somma = v1 + v2 + v3;
-        totalWeightDisplay.textContent = somma + '%';
 
-        if (somma === 100) {
+        let v1Norm = 0;
+        let v2Norm = 0;
+        let v3Norm = 0;
+
+        if (somma > 0) {
+            // normalizziamo i valori
+            v1Norm = (v1 / somma) * 100;
+            v2Norm = (v2 / somma) * 100;
+            v3Norm = (v3 / somma) * 100;
+
             calculateBtn.disabled = false;
             calculateBtn.style.opacity = '1';
-            totalWeightDisplay.style.color = 'green';
         } else {
             calculateBtn.disabled = true;
             calculateBtn.style.opacity = '0.5';
-            totalWeightDisplay.style.color = 'red';
         }
+
+        valIrrad.textContent = v1Norm.toFixed(1) + '%';
+        valReddito.textContent = v2Norm.toFixed(1) + '%';
+        valEdifici.textContent = v3Norm.toFixed(1) + '%';
 
         // GESTIONE VISIBILITÀ SELETTORE MESI
         if (calcoloEffettuato) {
@@ -89,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (typeof aggiornaMappaRegioni === "function") {
             aggiornaMappaRegioni(pesiAttuali);
         }
-        calcoloEffettuato = false;
     });
 
     // Se l'utente cambia il mese dopo aver già calcolato, aggiorna tutto
