@@ -1,0 +1,111 @@
+REGIONE;PROVINCIA;EDIFICI_1_3_PIANI;TOTALE_EDIFICI_PIANI_NOTI;PERC_EDIFICI_BASSI
+Piemonte;Torino;279926;323823;86,44
+Piemonte;Vercelli;45239;49484;91,42
+Piemonte;Novara;74249;80022;92,79
+Piemonte;Cuneo;169658;180051;94,23
+Piemonte;Asti;66383;69422;95,62
+Piemonte;Alessandria;121388;128585;94,4
+Piemonte;Biella;48942;54737;89,41
+Piemonte;Verbano-Cusio-Ossola;53834;58566;91,92
+Valle d'Aosta/Vallée d'Aoste;Valle d'Aosta/Vallée d'Aoste;35972;43220;83,23
+Lombardia;Varese;153821;164714;93,39
+Lombardia;Como;110875;121060;91,59
+Lombardia;Sondrio;56360;67654;83,31
+Lombardia;Milano;167642;221891;75,55
+Lombardia;Bergamo;162405;181117;89,67
+Lombardia;Brescia;213021;230812;92,29
+Lombardia;Pavia;131325;137239;95,69
+Lombardia;Cremona;67210;70338;95,55
+Lombardia;Mantova;91218;94231;96,8
+Lombardia;Lecco;56061;63038;88,93
+Lombardia;Lodi;33672;35813;94,02
+Lombardia;Monza e della Brianza;89174;100733;88,53
+Trentino-Alto Adige/Südtirol;Bolzano/Bozen;72767;85644;84,96
+Trentino-Alto Adige/Südtirol;Trento;95763;125292;76,43
+Veneto;Verona;159581;170674;93,5
+Veneto;Vicenza;178093;192710;92,42
+Veneto;Belluno;62278;73717;84,48
+Veneto;Treviso;192674;197782;97,42
+Veneto;Venezia;144394;159646;90,45
+Veneto;Padova;183686;191641;95,85
+Veneto;Rovigo;70209;71106;98,74
+Friuli-Venezia Giulia;Udine;147826;155995;94,76
+Friuli-Venezia Giulia;Gorizia;28582;30760;92,92
+Friuli-Venezia Giulia;Trieste;23255;31174;74,6
+Friuli-Venezia Giulia;Pordenone;85477;88434;96,66
+Liguria;Imperia;47901;56070;85,43
+Liguria;Savona;52402;62058;84,44
+Liguria;Genova;74667;98917;75,48
+Liguria;La Spezia;40611;46423;87,48
+Emilia-Romagna;Piacenza;67705;73589;92
+Emilia-Romagna;Parma;77459;89995;86,07
+Emilia-Romagna;Reggio nell'Emilia;88038;97691;90,12
+Emilia-Romagna;Modena;103487;118996;86,97
+Emilia-Romagna;Bologna;101922;123950;82,23
+Emilia-Romagna;Ferrara;81623;85410;95,57
+Emilia-Romagna;Ravenna;85651;89823;95,36
+Emilia-Romagna;Forlì-Cesena;71105;76665;92,75
+Emilia-Romagna;Rimini;53631;61690;86,94
+Toscana;Massa-Carrara;56526;59749;94,61
+Toscana;Lucca;123734;129556;95,51
+Toscana;Pistoia;62761;66399;94,52
+Toscana;Firenze;112292;130796;85,85
+Toscana;Livorno;43656;49381;88,41
+Toscana;Pisa;76584;81202;94,31
+Toscana;Arezzo;71145;76585;92,9
+Toscana;Siena;45162;51862;87,08
+Toscana;Grosseto;47272;52166;90,62
+Toscana;Prato;32108;35803;89,68
+Umbria;Perugia;137371;149566;91,85
+Umbria;Terni;46376;50373;92,07
+Marche;Pesaro e Urbino;71333;78228;91,19
+Marche;Ancona;73030;83333;87,64
+Marche;Macerata;63945;72500;88,2
+Marche;Ascoli Piceno;31410;39181;80,17
+Marche;Fermo;32521;38382;84,73
+Lazio;Viterbo;69380;75053;92,44
+Lazio;Rieti;61780;65057;94,96
+Lazio;Roma;316295;393664;80,35
+Lazio;Latina;110584;121026;91,37
+Lazio;Frosinone;138904;146410;94,87
+Abruzzo;L'Aquila;104305;112101;93,05
+Abruzzo;Teramo;64831;71235;91,01
+Abruzzo;Pescara;54287;60830;89,24
+Abruzzo;Chieti;93805;104327;89,91
+Molise;Campobasso;66452;73035;90,99
+Molise;Isernia;31440;34279;91,72
+Campania;Caserta;173736;183983;94,43
+Campania;Benevento;78940;83015;95,09
+Campania;Napoli;251260;292920;85,78
+Campania;Avellino;118956;125943;94,45
+Campania;Salerno;187452;206447;90,8
+Puglia;Foggia;110902;121666;91,15
+Puglia;Bari;154184;179776;85,76
+Puglia;Taranto;132690;140651;94,34
+Puglia;Brindisi;127885;131768;97,05
+Puglia;Lecce;312621;316282;98,84
+Puglia;Barletta-Andria-Trani;49282;57155;86,23
+Basilicata;Potenza;106178;115181;92,18
+Basilicata;Matera;38496;44854;85,83
+Calabria;Cosenza;187088;209145;89,45
+Calabria;Catanzaro;98780;108903;90,7
+Calabria;Reggio di Calabria;156219;172559;90,53
+Calabria;Crotone;50513;56997;88,62
+Calabria;Vibo Valentia;58991;62243;94,78
+Sicilia;Trapani;155502;165001;94,24
+Sicilia;Palermo;231958;278539;83,28
+Sicilia;Messina;169956;190912;89,02
+Sicilia;Agrigento;141957;164333;86,38
+Sicilia;Caltanissetta;78625;92436;85,06
+Sicilia;Enna;59888;68060;87,99
+Sicilia;Catania;205927;228837;89,99
+Sicilia;Ragusa;114795;121813;94,24
+Sicilia;Siracusa;114602;121488;94,33
+Sardegna;Sassari;82817;89301;92,74
+Sardegna;Nuoro;50000;54138;92,36
+Sardegna;Cagliari;125015;131587;95,01
+Sardegna;Oristano;68145;69551;97,98
+Sardegna;Olbia-Tempio;60310;62119;97,09
+Sardegna;Ogliastra;20721;24090;86,01
+Sardegna;Medio Campidano;39623;40045;98,95
+Sardegna;Carbonia-Iglesias;40327;41479;97,22

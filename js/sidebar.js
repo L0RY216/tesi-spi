@@ -81,15 +81,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     calculateBtn.addEventListener('click', function () {
         calcoloEffettuato = true;
-        controllaPesi();
 
+        // Estrai valori grezzi
+        const v1Raw = parseInt(wIrrad.value);
+        const v2Raw = parseInt(wReddito.value);
+        const v3Raw = parseInt(wEdifici.value);
+        const sommaRaw = v1Raw + v2Raw + v3Raw;
+
+        if (sommaRaw === 0) return; // Evita divisioni per 0
+
+        // Calcola e passa le percentuali precise
         const pesiAttuali = {
-            irrad: parseInt(wIrrad.value),
-            reddito: parseInt(wReddito.value),
-            edifici: parseInt(wEdifici.value)
+            irrad: (v1Raw / sommaRaw) * 100,
+            reddito: (v2Raw / sommaRaw) * 100,
+            edifici: (v3Raw / sommaRaw) * 100
         };
 
-        // Chiamiamo le funzioni di map.js (che scriveremo nel prossimo step)
+        controllaPesi();
+
         if (typeof aggiornaMappaRegioni === "function") {
             aggiornaMappaRegioni(pesiAttuali);
         }

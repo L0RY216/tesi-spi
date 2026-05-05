@@ -1,6 +1,6 @@
 // --- CONFIGURAZIONE ---
 const mapItalia = L.map('map-italia', {
-    zoomControl: false, dragging: false, scrollWheelZoom: false, zoomSnap: 0.1
+    zoomControl: false, dragging: false, scrollWheelZoom: false, doubleClickZoom: false, zoomSnap: 0.1
 }).setView([41.5, 12.5], 7);
 
 const mapRegione = L.map('map-regione', {
@@ -10,6 +10,11 @@ const mapRegione = L.map('map-regione', {
 let layerProvinceAttive = null;
 let datiProvinceGlobali = null; // Salviamo i dati qui per riusarli
 
+let layerItalia = null; // Portiamo fuori il layer così possiamo modificarlo dopo
+let datiRegioniSPI = null;
+let datiProvinceSPI = null;
+let ultimiPesiCalcolati = null;
+
 async function init() {
     try {
         const resReg = await fetch('https://raw.githubusercontent.com/openpolis/geojson-italy/master/geojson/limits_IT_regions.geojson');
@@ -18,31 +23,43 @@ async function init() {
         const resProv = await fetch('https://raw.githubusercontent.com/openpolis/geojson-italy/master/geojson/limits_IT_provinces.geojson');
         datiProvinceGlobali = await resProv.json();
 
-        const layerItalia = L.geoJSON(dataReg, {
+        // Carico i nostri dati SPI dai file JSON
+        const resRegSPI = await fetch('data/dati_regioni.json');
+        datiRegioniSPI = await resRegSPI.json();
+
+        const resProvSPI = await fetch('data/dati_province.json');
+        datiProvinceSPI = await resProvSPI.json();
+
+        // Disegna la mappa Italia base
+        layerItalia = L.geoJSON(dataReg, {
             style: { color: "#2c3e50", weight: 1.5, fillColor: "#c6c6c6", fillOpacity: 1 },
             onEachFeature: (f, l) => {
                 l.bindTooltip(f.properties.reg_name);
-                l.on('mouseover', () => l.setStyle({ fillColor: '#77c2f3' }));
-                l.on('mouseout', () => l.setStyle({ fillColor: '#c6c6c6' }));
+                l.on('mouseover', () => l.setStyle({ weight: 3 })); // Evidenzia solo il bordo
+                l.on('mouseout', () => l.setStyle({ weight: 1.5 })); // Ripristina il bordo
                 l.on('click', () => mostraDettaglio(f.properties.reg_name));
             }
         }).addTo(mapItalia);
         // lasciamo 40 pixel di margine (padding) da ogni lato
         mapItalia.fitBounds(layerItalia.getBounds(), { padding: [20, 20] });
-    } catch (e) { console.error(e); }
+    } catch (e) { console.error("Errore di caricamento:", e); }
 }
 
 function mostraDettaglio(nomeRegione) {
+    if (!ultimiPesiCalcolati) {
+        return;
+    }
+
     const sezioneDettaglio = document.getElementById('blocco-dettaglio');
     sezioneDettaglio.classList.remove('nascosto');
 
-    // 1. Scorrimento verso il basso allineato al fondo
+    // Scorrimento verso il basso allineato al fondo
     sezioneDettaglio.scrollIntoView({ behavior: 'smooth', block: 'end' });
 
-    // 2. Aggiorno testo
+    // Aggiorno testo
     document.getElementById('nome-regione-titolo').innerText = "Regione: " + nomeRegione;
 
-    // 3. Disegno Province con un piccolo ritardo per evitare la mappa bianca
+    // Disegno Province con un piccolo ritardo per permettere l'animazione di scorrimento
     setTimeout(() => {
         mapRegione.invalidateSize();
 
@@ -54,16 +71,111 @@ function mostraDettaglio(nomeRegione) {
         };
 
         layerProvinceAttive = L.geoJSON(filtrate, {
-            style: { color: "#2c3e50", weight: 1, fillColor: "#c6c6c6", fillOpacity: 1 },
+            // STILE DINAMICO: calcoliamo il colore provincia per provincia
+            style: function (feature) {
+                // Recupero la sigla direttamente dal GeoJSON
+                const siglaProv = feature.properties.prov_acr;
+
+                const item = datiProvinceSPI[siglaProv];
+                let color = "#c6c6c6"; // Colore di default se mancano i dati
+
+                // Se troviamo i dati nel nostro JSON, calcoliamo il punteggio
+                if (item) {
+                    const score = calcolaPunteggioSPI(item, ultimiPesiCalcolati);
+                    color = getColorByScore(score);
+                }
+
+                return {
+                    color: "#2c3e50", // Colore del bordo
+                    weight: 1,        // Spessore del bordo
+                    fillColor: color, // Il nostro colore dinamico
+                    fillOpacity: 1
+                };
+            },
             onEachFeature: (f, l) => {
-                l.bindTooltip(f.properties.prov_name);
-                l.on('mouseover', () => l.setStyle({ fillColor: '#77c2f3' }));
-                l.on('mouseout', () => l.setStyle({ fillColor: '#c6c6c6' }));
+                const nomeProv = f.properties.prov_name;
+                const siglaProv = f.properties.prov_acr;
+
+                const item = datiProvinceSPI[siglaProv];
+                let labelTesto = nomeProv;
+
+                if (item) {
+                    const score = calcolaPunteggioSPI(item, ultimiPesiCalcolati);
+                    labelTesto = `${nomeProv}: ${score.toFixed(1)}`;
+                }
+
+                l.bindTooltip(labelTesto);
+
+                // HOVER EFFECT: Ingrossiamo il bordo come per le regioni
+                l.on('mouseover', () => l.setStyle({ weight: 3 }));
+                l.on('mouseout', () => l.setStyle({ weight: 1 }));
             }
         }).addTo(mapRegione);
 
         mapRegione.fitBounds(layerProvinceAttive.getBounds(), { padding: [20, 20] });
     }, 400); // 400ms di attesa per permettere allo scorrimento di iniziare
 }
+
+// Funzione per ottenere il colore in base al punteggio SPI (0-100)
+function getColorByScore(score) {
+    if (score === null || score === undefined) return '#c6c6c6'; // Grigio se nessun dato
+    // 100-91 / 90-81 / 80-76 / 75-71 / 70-66 / 65-61 / 60-56 / 55-51 / 50-41 / 40-31 / 30-21 / 20-0
+
+    return score > 90 ? '#0b901c' : // Verde Scuro
+        score > 80 ? '#5fc610' : // Verde
+            score > 75 ? '#8fea20' : // Verde chiaro
+                score > 70 ? '#d4f52d' : // Giallo-Verde 
+                    score > 65 ? '#fffb00' : // Giallo chiaro
+                        score > 60 ? '#ffea00' : // Giallo
+                            score > 55 ? '#edd500' : // Giallo scuro
+                                score > 50 ? '#fec300' : // Arancione chiaro
+                                    score > 40 ? '#fc9b00' : // Arancione
+                                        score > 30 ? '#e27a03' : // Arancione scuro
+                                            score > 20 ? '#f21212' : // Rosso
+                                                '#c42b23';  // Rosso scuro
+}
+
+// Viene chiamata da sidebar.js quando si clicca "Calcola" o si cambia il mese
+window.aggiornaMappaRegioni = function (pesi) {
+    if (!layerItalia || !datiRegioniSPI) return; // Sicurezza: attendi il caricamento dei dati
+
+    ultimiPesiCalcolati = pesi;
+
+    // 1. Calcola il punteggio per TUTTE le regioni
+    const punteggiRegioni = {};
+    for (const nomeReg in datiRegioniSPI) {
+        const item = datiRegioniSPI[nomeReg];
+        // calcolaPunteggioSPI è definita in sidebar.js
+        punteggiRegioni[nomeReg] = calcolaPunteggioSPI(item, pesi);
+    }
+
+    // 2. Ricolora la mappa in base ai punteggi
+    layerItalia.eachLayer(layer => {
+        const nomeRegGeo = layer.feature.properties.reg_name;
+
+        // Bisogna mappare il nome GeoJSON con la chiave JSON se ci sono differenze (es. Valle d'Aosta)
+        // Gestistiamo qui le eccezioni
+        let key = nomeRegGeo;
+        if (key === "Valle d'Aosta/Vallée d'Aoste") key = "Valle d'Aosta";
+        if (key === "Trentino-Alto Adige/Südtirol") key = "Trentino-Alto Adige";
+
+        const score = punteggiRegioni[key];
+
+        if (score !== undefined) {
+            const color = getColorByScore(score);
+            layer.setStyle({ fillColor: color });
+
+            // Aggiorna l'etichetta per mostrare il punteggio
+            layer.setTooltipContent(`${nomeRegGeo}: ${score.toFixed(1)}`);
+        }
+    });
+
+    // Se c'è una regione aperta nel dettaglio, aggiorniamo anche i colori delle sue province!
+    const nomeRegioneAperta = document.getElementById('nome-regione-titolo').innerText.replace("Regione: ", "");
+    if (document.getElementById('blocco-dettaglio').classList.contains('nascosto') === false) {
+        // Ridisegna il dettaglio con i nuovi pesi
+        mostraDettaglio(nomeRegioneAperta);
+    }
+};
 
 init();

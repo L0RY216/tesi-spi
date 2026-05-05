@@ -17,7 +17,7 @@
       "annuo": 33890
     },
     "reddito": 17732,
-    "edifici_bassi": 0
+    "edifici_bassi": 88.95
   },
   "Piemonte": {
     "nome": "Piemonte",
@@ -37,7 +37,7 @@
       "annuo": 27790
     },
     "reddito": 23185,
-    "edifici_bassi": 0
+    "edifici_bassi": 90.99
   },
   "Marche": {
     "nome": "Marche",
@@ -57,7 +57,7 @@
       "annuo": 28758
     },
     "reddito": 21408,
-    "edifici_bassi": 0
+    "edifici_bassi": 87.36
   },
   "Valle d'Aosta": {
     "nome": "Valle d'Aosta",
@@ -77,7 +77,7 @@
       "annuo": 26718
     },
     "reddito": 24179,
-    "edifici_bassi": 0
+    "edifici_bassi": 83.23
   },
   "Toscana": {
     "nome": "Toscana",
@@ -97,7 +97,7 @@
       "annuo": 28941
     },
     "reddito": 22580,
-    "edifici_bassi": 0
+    "edifici_bassi": 91.51
   },
   "Campania": {
     "nome": "Campania",
@@ -117,7 +117,7 @@
       "annuo": 30492
     },
     "reddito": 18380,
-    "edifici_bassi": 0
+    "edifici_bassi": 90.81
   },
   "Puglia": {
     "nome": "Puglia",
@@ -137,7 +137,7 @@
       "annuo": 31550
     },
     "reddito": 17723,
-    "edifici_bassi": 0
+    "edifici_bassi": 93.69
   },
   "Veneto": {
     "nome": "Veneto",
@@ -157,7 +157,7 @@
       "annuo": 27467
     },
     "reddito": 23516,
-    "edifici_bassi": 0
+    "edifici_bassi": 93.72
   },
   "Lombardia": {
     "nome": "Lombardia",
@@ -177,7 +177,7 @@
       "annuo": 27689
     },
     "reddito": 25092,
-    "edifici_bassi": 0
+    "edifici_bassi": 89.53
   },
   "Emilia-Romagna": {
     "nome": "Emilia-Romagna",
@@ -197,7 +197,7 @@
       "annuo": 28389
     },
     "reddito": 24178,
-    "edifici_bassi": 0
+    "edifici_bassi": 89.34
   },
   "Trentino-Alto Adige": {
     "nome": "Trentino-Alto Adige",
@@ -217,7 +217,7 @@
       "annuo": 26350
     },
     "reddito": 25142,
-    "edifici_bassi": 0
+    "edifici_bassi": 79.90
   },
   "Sardegna": {
     "nome": "Sardegna",
@@ -237,7 +237,7 @@
       "annuo": 32667
     },
     "reddito": 18950,
-    "edifici_bassi": 0
+    "edifici_bassi": 95.05
   },
   "Molise": {
     "nome": "Molise",
@@ -257,7 +257,7 @@
       "annuo": 29593
     },
     "reddito": 18143,
-    "edifici_bassi": 0
+    "edifici_bassi": 91.22
   },
   "Calabria": {
     "nome": "Calabria",
@@ -277,7 +277,7 @@
       "annuo": 32013
     },
     "reddito": 16942,
-    "edifici_bassi": 0
+    "edifici_bassi": 90.45
   },
   "Abruzzo": {
     "nome": "Abruzzo",
@@ -297,7 +297,7 @@
       "annuo": 29305
     },
     "reddito": 20022,
-    "edifici_bassi": 0
+    "edifici_bassi": 91.03
   },
   "Lazio": {
     "nome": "Lazio",
@@ -317,7 +317,7 @@
       "annuo": 30506
     },
     "reddito": 21188,
-    "edifici_bassi": 0
+    "edifici_bassi": 86.99
   },
   "Liguria": {
     "nome": "Liguria",
@@ -337,7 +337,7 @@
       "annuo": 28499
     },
     "reddito": 22474,
-    "edifici_bassi": 0
+    "edifici_bassi": 81.82
   },
   "Friuli-Venezia Giulia": {
     "nome": "Friuli-Venezia Giulia",
@@ -357,7 +357,7 @@
       "annuo": 26622
     },
     "reddito": 23747,
-    "edifici_bassi": 0
+    "edifici_bassi": 93.07
   },
   "Basilicata": {
     "nome": "Basilicata",
@@ -377,7 +377,7 @@
       "annuo": 30129
     },
     "reddito": 18309,
-    "edifici_bassi": 0
+    "edifici_bassi": 90.40
   },
   "Umbria": {
     "nome": "Umbria",
@@ -397,6 +397,6 @@
       "annuo": 30028
     },
     "reddito": 20947,
-    "edifici_bassi": 0
+    "edifici_bassi": 91.90
   }
 }

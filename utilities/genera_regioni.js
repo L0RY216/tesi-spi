@@ -58,8 +58,8 @@ try {
     }
 
     fs.writeFileSync('./data/dati_regioni.json', JSON.stringify(outputRegioni, null, 2));
-    console.log(`✅ Successo! Creato dati_regioni.json con struttura perfettamente identica alle province.`);
+    console.log(`Successo! Creato dati_regioni.json con struttura perfettamente identica alle province.`);
 
 } catch (e) {
-    console.error("❌ Errore:", e.message);
+    console.error("Errore:", e.message);
 }
