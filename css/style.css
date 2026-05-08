@@ -102,7 +102,8 @@ html {
 
 .top-half {
     display: flex;
-    height: 100vh;
+    height: fit-content;
+    min-height: 100vh;
     width: 100%;
 }
 
@@ -115,7 +116,8 @@ html {
 
 .bottom-half {
     display: flex;
-    height: 85vh;
+    height: fit-content;
+    min-height: 85vh;
     border-top: 3px solid #3498db;
     background: #ffffff;
 }
@@ -129,7 +131,7 @@ html {
     background: #2c3e50;
     flex: none;
     padding: 20px;
-    overflow-y: auto;
+    border-right: 3px solid #3498db;
 }
 
 #lista-ranking-province {
