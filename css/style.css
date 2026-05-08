@@ -109,7 +109,7 @@ html {
 
 #map-italia {
     width: 55%;
-    background-color: #ffffff !important;
+    background-color: #d2f7fc !important;
 }
 
 /* --- PARTE SOTTO --- */
@@ -141,7 +141,7 @@ html {
 #map-regione {
     width: 60%;
     flex: none;
-    background-color: #ffffff !important;
+    background-color: #d2f7fc !important;
 }
 
 .leaflet-container {
