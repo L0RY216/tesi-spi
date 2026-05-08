@@ -18,14 +18,44 @@
                 <span class="badge">Analisi Geospaziale</span>
             </div>
             <div class="menu-destra">
+                <details class="legenda-dropdown">
+                    <summary>Legenda Indice SPI</summary>
+                    <div class="legenda-content">
+                        <div class="legenda-item"><span class="color-box" style="background: #0b901c;"></span> > 90
+                            (Eccellente)</div>
+                        <div class="legenda-item"><span class="color-box" style="background: #5fc610;"></span> 81 - 90
+                        </div>
+                        <div class="legenda-item"><span class="color-box" style="background: #8fea20;"></span> 76 - 80
+                        </div>
+                        <div class="legenda-item"><span class="color-box" style="background: #d4f52d;"></span> 71 - 75
+                        </div>
+                        <div class="legenda-item"><span class="color-box" style="background: #fffb00;"></span> 66 - 70
+                        </div>
+                        <div class="legenda-item"><span class="color-box" style="background: #ffea00;"></span> 61 - 65
+                        </div>
+                        <div class="legenda-item"><span class="color-box" style="background: #edd500;"></span> 56 - 60
+                        </div>
+                        <div class="legenda-item"><span class="color-box" style="background: #fec300;"></span> 51 - 55
+                        </div>
+                        <div class="legenda-item"><span class="color-box" style="background: #fc9b00;"></span> 41 - 50
+                        </div>
+                        <div class="legenda-item"><span class="color-box" style="background: #e27a03;"></span> 31 - 40
+                        </div>
+                        <div class="legenda-item"><span class="color-box" style="background: #f21212;"></span> 21 - 30
+                        </div>
+                        <div class="legenda-item"><span class="color-box" style="background: #c42b23;"></span>
+                            < 20 (Pessimo)</div>
+                        </div>
+                </details>
                 <p class="fonte-dati">Data: <strong>PVGIS-SARAH | ISTAT</strong></p>
+                <button id="btn-guida" class="guida-trigger">ⓘ Guida</button>
             </div>
         </header>
 
         <div class="top-half">
             <aside class="sidebar">
                 <div class="parameters-container">
-                    <h3>Pesi dell'Indice SPI</h3>
+                    <h3 id="parameters-title">Parametri dell'Indice SPI</h3>
                     <p class="instruction-text">
                         <em>Nota: Nella scelta dei parametri i pesi impostati vengono normalizzati automaticamente</em>
                     </p>
@@ -33,25 +63,25 @@
                     <div class="parameter-item">
                         <div class="param-header">
                             <label for="w_irrad">Irradiazione Solare</label>
-                            <span class="weight-val" id="val_irrad">40%</span>
+                            <span class="weight-val" id="val_irrad">33.3%</span>
                         </div>
-                        <input type="range" id="w_irrad" class="weight-slider" min="0" max="100" value="40">
+                        <input type="range" id="w_irrad" class="weight-slider" min="0" max="100" value="33.3">
                     </div>
 
                     <div class="parameter-item">
                         <div class="param-header">
                             <label for="w_reddito">Reddito Medio</label>
-                            <span class="weight-val" id="val_reddito">30%</span>
+                            <span class="weight-val" id="val_reddito">33.3%</span>
                         </div>
-                        <input type="range" id="w_reddito" class="weight-slider" min="0" max="100" value="30">
+                        <input type="range" id="w_reddito" class="weight-slider" min="0" max="100" value="33.3">
                     </div>
 
                     <div class="parameter-item">
                         <div class="param-header">
                             <label for="w_edifici">Edifici Bassi</label>
-                            <span class="weight-val" id="val_edifici">30%</span>
+                            <span class="weight-val" id="val_edifici">33.3%</span>
                         </div>
-                        <input type="range" id="w_edifici" class="weight-slider" min="0" max="100" value="30">
+                        <input type="range" id="w_edifici" class="weight-slider" min="0" max="100" value="33.3">
                     </div>
 
                     <button id="calculate-btn" class="primary-btn">Calcola Indice sulla Mappa</button>
@@ -75,33 +105,69 @@
                         <label><input type="radio" name="month" value="annuo" checked> Annuo</label>
                     </div>
                 </div>
-
-                <div id="ranking-container">
-                    <h3>Ranking Regioni</h3>
-                    <ul id="regions-list"></ul>
-                </div>
             </aside>
 
             <main id="map-italia"></main>
+
+            <aside id="ranking-destra" class="ranking-sidebar">
+                <div class="ranking-section">
+                    <h3 class="rank-title top-title">TOP 3 REGIONI</h3>
+                    <div id="top-3-container" class="rank-list">
+                        <p class="empty-msg">Calcola l'indice per vedere la classifica</p>
+                        <!-- Qui verranno inseriti i <li> da JS -->
+                        <ul id="top-3-list"></ul>
+                    </div>
+                </div>
+
+                <div class="ranking-divider"></div>
+
+                <div class="ranking-section">
+                    <h3 class="rank-title flop-title">FLOP 3 REGIONI</h3>
+                    <div id="flop-3-container" class="rank-list">
+                        <!-- Qui verranno inseriti i <li> da JS -->
+                        <ul id="flop-3-list"></ul>
+                    </div>
+                </div>
+            </aside>
         </div>
 
         <div id="blocco-dettaglio" class="bottom-half nascosto">
             <div class="pannello-tabella">
                 <h3 id="nome-regione-titolo">Dettaglio Regione</h3>
-                <table id="tabella-province">
-                    <thead>
-                        <tr>
-                            <th>Provincia</th>
-                            <th>Indice SPI</th>
-                        </tr>
-                    </thead>
-                    <tbody id="corpo-tabella">
-                    </tbody>
-                </table>
+
+                <div class="ranking-section">
+                    <h3 class="rank-title">RANKING PROVINCE</h3>
+                    <ul id="lista-ranking-province" class="rank-list">
+                    </ul>
+                </div>
             </div>
             <div id="map-regione"></div>
         </div>
 
+    </div>
+
+    <!-- Struttura della modal per la guida -->
+    <div id="modal-guida" class="modal nascosto">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Guida alla Dashboard SPI</h2>
+            <p>L'<strong>Indice di Potenziale Solare (SPI)</strong> aiuta a identificare le aree più idonee per
+                l'installazione di impianti fotovoltaici.</p>
+            <ul>
+                <li><strong>Pesi:</strong> Muovi gli slider per decidere cosa è più importante. Il sistema bilancia
+                    automaticamente i valori al 100%.</li>
+                <li><strong>Calcolo:</strong> Clicca "Calcola" per aggiornare i colori della mappa nazionale.</li>
+                <li><strong>Dettaglio:</strong> Clicca su una regione nella mappa per esplorare i dati delle singole
+                    province.</li>
+                <li><strong>Colori:</strong> Il verde indica un alto potenziale, il rosso una bassa idoneità.</li>
+            </ul>
+            <strong>Riferimenti Dati:</strong><br>
+            • <em>Irradiazione:</em> Database PVGIS-SARAH (Media anno 2023).<br>
+            • <em>Reddito:</em> ISTAT,Redditi e principali variabili IRPEF del 2023.<br>
+            • <em>Edifici Bassi:</em> ISTAT, Censimento della popolazione e delle abitazioni del 2011.<br>
+            <br>
+            <em>Sviluppato con tecnologia open-source LeafletJS</em>
+        </div>
     </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>

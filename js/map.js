@@ -1,10 +1,10 @@
 // --- CONFIGURAZIONE ---
 const mapItalia = L.map('map-italia', {
-    zoomControl: false, dragging: false, scrollWheelZoom: false, doubleClickZoom: false, zoomSnap: 0.1
+    zoomControl: false, dragging: false, scrollWheelZoom: false, doubleClickZoom: false, zoomSnap: 0.1, attributionControl: false
 }).setView([41.5, 12.5], 7);
 
 const mapRegione = L.map('map-regione', {
-    zoomControl: true, dragging: false, scrollWheelZoom: false, doubleClickZoom: false, touchZoom: false
+    zoomControl: true, dragging: false, scrollWheelZoom: false, doubleClickZoom: false, touchZoom: false, attributionControl: false
 }).setView([42.0, 12.5], 7);
 
 let layerProvinceAttive = null;
@@ -40,7 +40,7 @@ async function init() {
                 l.on('click', () => mostraDettaglio(f.properties.reg_name));
             }
         }).addTo(mapItalia);
-        // lasciamo 40 pixel di margine (padding) da ogni lato
+        // lasciamo 20 pixel di margine (padding) da ogni lato
         mapItalia.fitBounds(layerItalia.getBounds(), { padding: [20, 20] });
     } catch (e) { console.error("Errore di caricamento:", e); }
 }
@@ -70,6 +70,25 @@ function mostraDettaglio(nomeRegione) {
             features: datiProvinceGlobali.features.filter(p => p.properties.reg_name === nomeRegione)
         };
 
+        // LOGICA RANKING PROVINCE
+        const rankingProvince = [];
+        let nomeRegioneRanking = nomeRegione;
+        if (nomeRegioneRanking === "Valle d'Aosta/Vallée d'Aoste") nomeRegioneRanking = "Valle d'Aosta";
+        if (nomeRegioneRanking === "Trentino-Alto Adige/Südtirol") nomeRegioneRanking = "Trentino-Alto Adige";
+
+        // Cerchiamo nel nostro JSON tutte le province che appartengono a questa regione
+        for (const sigla in datiProvinceSPI) {
+            const infoProv = datiProvinceSPI[sigla];
+
+            if (infoProv.regione === nomeRegioneRanking) {
+                const score = calcolaPunteggioSPI(infoProv, ultimiPesiCalcolati);
+                rankingProvince.push({ nome: infoProv.nome, score: score });
+            }
+        }
+
+        // Popoliamo la lista nel dettaglio
+        aggiornaListaRanking('lista-ranking-province', rankingProvince);
+
         layerProvinceAttive = L.geoJSON(filtrate, {
             // STILE DINAMICO: calcoliamo il colore provincia per provincia
             style: function (feature) {
@@ -87,28 +106,27 @@ function mostraDettaglio(nomeRegione) {
 
                 return {
                     color: "#2c3e50", // Colore del bordo
-                    weight: 1,        // Spessore del bordo
+                    weight: 1.5,        // Spessore del bordo
                     fillColor: color, // Il nostro colore dinamico
                     fillOpacity: 1
                 };
             },
             onEachFeature: (f, l) => {
-                const nomeProv = f.properties.prov_name;
                 const siglaProv = f.properties.prov_acr;
-
                 const item = datiProvinceSPI[siglaProv];
-                let labelTesto = nomeProv;
+                let nomeDaMostrare = item ? item.nome : f.properties.prov_name;
+                let labelTesto = nomeDaMostrare;
 
                 if (item) {
                     const score = calcolaPunteggioSPI(item, ultimiPesiCalcolati);
-                    labelTesto = `${nomeProv}: ${score.toFixed(1)}`;
+                    labelTesto = `${nomeDaMostrare}: ${score.toFixed(1)}`;
                 }
 
                 l.bindTooltip(labelTesto);
 
                 // HOVER EFFECT: Ingrossiamo il bordo come per le regioni
                 l.on('mouseover', () => l.setStyle({ weight: 3 }));
-                l.on('mouseout', () => l.setStyle({ weight: 1 }));
+                l.on('mouseout', () => l.setStyle({ weight: 1.5 }));
             }
         }).addTo(mapRegione);
 
@@ -141,12 +159,16 @@ window.aggiornaMappaRegioni = function (pesi) {
 
     ultimiPesiCalcolati = pesi;
 
+    const punteggiPerRanking = [];
+
     // 1. Calcola il punteggio per TUTTE le regioni
     const punteggiRegioni = {};
     for (const nomeReg in datiRegioniSPI) {
         const item = datiRegioniSPI[nomeReg];
-        // calcolaPunteggioSPI è definita in sidebar.js
-        punteggiRegioni[nomeReg] = calcolaPunteggioSPI(item, pesi);
+        const score = calcolaPunteggioSPI(item, pesi);
+        punteggiRegioni[nomeReg] = score;
+        // Aggiungiamo all'array per il ranking
+        punteggiPerRanking.push({ nome: nomeReg, score: score });
     }
 
     // 2. Ricolora la mappa in base ai punteggi
@@ -170,12 +192,51 @@ window.aggiornaMappaRegioni = function (pesi) {
         }
     });
 
-    // Se c'è una regione aperta nel dettaglio, aggiorniamo anche i colori delle sue province!
+    // Se c'è una regione aperta nel dettaglio, aggiorniamo anche i colori delle sue province
     const nomeRegioneAperta = document.getElementById('nome-regione-titolo').innerText.replace("Regione: ", "");
     if (document.getElementById('blocco-dettaglio').classList.contains('nascosto') === false) {
         // Ridisegna il dettaglio con i nuovi pesi
         mostraDettaglio(nomeRegioneAperta);
     }
+
+    // LOGICA RANKING REGIONI
+    // Top 3
+    const top3 = [...punteggiPerRanking].sort((a, b) => b.score - a.score).slice(0, 3);
+    aggiornaListaRanking('top-3-list', top3);
+
+    // Flop 3 (gli ultimi 3, invertiti per mostrare il peggiore in cima)
+    const flop3 = [...punteggiPerRanking].sort((a, b) => a.score - b.score).slice(0, 3);
+    aggiornaListaRanking('flop-3-list', flop3, false);
+
+    // Rimuove il messaggio "Calcola l'indice..." se presente
+    const msg = document.querySelector('.empty-msg');
+    if (msg) msg.style.display = 'none';
 };
+
+// Funzione per popolare una lista di ranking
+function aggiornaListaRanking(containerId, dati, decrescente = true) {
+    const listaUL = document.getElementById(containerId);
+    if (!listaUL) return;
+
+    // Pulizia della lista e rimozione eventuale messaggio "vuoto"
+    listaUL.innerHTML = "";
+
+    // Ordiniamo i dati in base allo score
+    const datiOrdinati = [...dati].sort((a, b) =>
+        decrescente ? b.score - a.score : a.score - b.score
+    );
+
+    datiOrdinati.forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'rank-item';
+        li.innerHTML = `
+            <span>${item.nome}</span>
+            <span class="rank-score" style="background-color: ${getColorByScore(item.score)}22; color: ${getColorByScore(item.score)}">
+                ${item.score.toFixed(1)}
+            </span>
+        `;
+        listaUL.appendChild(li);
+    });
+}
 
 init();

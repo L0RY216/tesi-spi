@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 3. LA FUNZIONE DI CALCOLO
     const MAX_REDDITO_ASSOLUTO = 30742;
     const MAX_IRRAD_ANNUALE = 34999;
-    const MAX_IRRAD_MENSILE = 249;
+    const MAX_IRRAD_MENSILE = 249.29;
 
     // Questa funzione trasforma i dati della provincia/regione in un punteggio 0-100
     window.calcolaPunteggioSPI = function (item, pesi) {
@@ -115,3 +115,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
     controllaPesi(); // Inizializzazione al caricamento
 });
+
+// Gestione della Modal Guida
+const modal = document.getElementById("modal-guida");
+const btn = document.getElementById("btn-guida");
+const span = document.getElementsByClassName("close-modal")[0];
+
+// Apri al click
+btn.onclick = function() {
+  modal.classList.remove("nascosto");
+}
+
+// Chiudi con la X
+span.onclick = function() {
+  modal.classList.add("nascosto");
+}
+
+// Chiudi cliccando fuori dalla finestra bianca
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.classList.add("nascosto");
+  }
+}

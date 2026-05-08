@@ -1,159 +1,16 @@
 /* --- STILI SIDEBAR E PARAMETRI --- */
-.istruzioni {
-    font-size: 0.85rem;
-    color: #bdc3c7;
-    margin-bottom: 20px;
-}
 
-.parametro-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #34495e;
-}
-
-.param-label {
-    font-weight: 500;
-    font-size: 0.95rem;
-}
-
-.parametro-sub-row {
-    background: #1a252f;
-    padding: 10px;
-    border-radius: 6px;
-    margin-top: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.9rem;
-}
-
-#mese-select {
-    padding: 5px;
-    border-radius: 4px;
-    background: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-/* --- IL BOTTONE SWITCH (ON/OFF) --- */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 44px;
-    height: 22px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #95a5a6;
-    transition: .4s;
-    border-radius: 22px;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-}
-
-input:checked+.slider {
-    background-color: #2ecc71;
-    /* Verde acceso quando ON */
-}
-
-input:checked+.slider:before {
-    transform: translateX(22px);
-}
-
-/* --- BOTTONE CONFERMA --- */
-#btn-conferma {
-    width: 100%;
-    margin-top: 25px;
-    padding: 12px;
-    background-color: #3498db;
+.sidebar {
+    width: 25%;
+    background: #2c3e50;
     color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s;
+    padding: 20px;
+    border-right: 3px solid #3498db;
+    flex-shrink: 0;
 }
 
-#btn-conferma:hover {
-    background-color: #2980b9;
-}
-
-/* --- CLASSIFICA TOP/FLOP --- */
-#blocco-classifica {
-    margin-top: 30px;
-    border-top: 2px solid #3498db;
-    padding-top: 15px;
-}
-
-#blocco-classifica h3 {
-    margin: 0 0 15px 0;
-    text-align: center;
-    font-size: 1.1rem;
-}
-
-.classifica-grid {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.top-3,
-.flop-3 {
-    flex: 1;
-    background: #1a252f;
-    padding: 10px;
-    border-radius: 6px;
-}
-
-.top-3 h4,
-.flop-3 h4 {
-    margin: 0 0 10px 0;
-    font-size: 0.9rem;
-    text-align: center;
-}
-
-.freccia-su {
-    color: #2ecc71;
-}
-
-.freccia-giu {
-    color: #e74c3c;
-}
-
-ol {
-    margin: 0;
-    padding-left: 20px;
-    font-size: 0.85rem;
-    color: #ecf0f1;
-}
-
-ol li {
-    margin-bottom: 5px;
+#parameters-title {
+    margin: 0px;
 }
 
 .parameters-container {
@@ -183,6 +40,85 @@ ol li {
     color: #3498db;
 }
 
+.ranking-sidebar {
+    width: 20%;
+    background: #2c3e50;
+    border-left: 3px solid #3498db;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --- STILE BLOCCHI RANKING --- */
+
+.ranking-section {
+    background: #1a252f;
+    border-radius: 8px;
+    padding: 15px;
+    padding-bottom: 0px;
+}
+
+.rank-title {
+    font-size: 0.95rem;
+    color: white;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 8px;
+    margin-top: 0;
+}
+
+.top-title {
+    color: #27ae60;
+    border-color: #27ae60;
+}
+
+.flop-title {
+    color: #c0392b;
+    border-color: #c0392b;
+}
+
+.rank-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.rank-item {
+    display: flex;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f1f1;
+    font-size: 0.9rem;
+}
+
+.rank-item:last-child {
+    border-bottom: none;
+}
+
+.rank-score {
+    font-weight: bold;
+    background: #ecf0f1;
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.ranking-divider {
+    height: 1px;
+    background: #49729a;
+    margin: 10px 0;
+}
+
+.empty-msg {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    font-style: italic;
+    text-align: center;
+}
+
+/* Bottone calcola indice */
 .primary-btn {
     width: 100%;
     padding: 12px;
@@ -192,7 +128,7 @@ ol li {
     border-radius: 6px;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
+    letter-spacing: 0.75px;
 }
 
 .primary-btn:hover {
@@ -200,6 +136,7 @@ ol li {
 }
 
 /* --- SELETTORE MESI --- */
+
 .month-selector {
     background: #1a252f;
     padding: 15px;
@@ -236,7 +173,6 @@ ol li {
     color: #ffffff;
 }
 
-/* Stile per i "pallini" del selettore */
 .month-grid input[type="radio"] {
     margin: 0 8px 0 0;
     cursor: pointer;
@@ -248,12 +184,10 @@ ol li {
 /* Diamo risalto all'opzione "Annuo" (l'ultima della lista) */
 .month-grid label:last-child {
     grid-column: 1 / -1;
-    /* Occupa entrambe le colonne per tutta la larghezza */
     background: #2c3e50;
     padding: 10px;
     border-radius: 6px;
     justify-content: center;
     color: #ffffff;
-    font-weight: bold;
     margin-top: 8px;
 }
