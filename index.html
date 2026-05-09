@@ -21,29 +21,29 @@
                 <details class="legenda-dropdown">
                     <summary>Legenda Indice SPI</summary>
                     <div class="legenda-content">
-                        <div class="legenda-item"><span class="color-box" style="background: #0b901c;"></span> > 90
+                        <div class="legenda-item"><span class="color-box" style="background: #c42b23;"></span> > 90
                             (Eccellente)</div>
-                        <div class="legenda-item"><span class="color-box" style="background: #5fc610;"></span> 81 - 90
+                        <div class="legenda-item"><span class="color-box" style="background: #f21212;"></span> 81 - 90
                         </div>
-                        <div class="legenda-item"><span class="color-box" style="background: #8fea20;"></span> 76 - 80
+                        <div class="legenda-item"><span class="color-box" style="background: #e27a03;"></span> 76 - 80
                         </div>
-                        <div class="legenda-item"><span class="color-box" style="background: #d4f52d;"></span> 71 - 75
+                        <div class="legenda-item"><span class="color-box" style="background: #fc9b00;"></span> 71 - 75
                         </div>
-                        <div class="legenda-item"><span class="color-box" style="background: #fffb00;"></span> 66 - 70
+                        <div class="legenda-item"><span class="color-box" style="background: #fec300;"></span> 66 - 70
                         </div>
-                        <div class="legenda-item"><span class="color-box" style="background: #ffea00;"></span> 61 - 65
+                        <div class="legenda-item"><span class="color-box" style="background: #edd500;"></span> 61 - 65
                         </div>
-                        <div class="legenda-item"><span class="color-box" style="background: #edd500;"></span> 56 - 60
+                        <div class="legenda-item"><span class="color-box" style="background: #ffea00;"></span> 56 - 60
                         </div>
-                        <div class="legenda-item"><span class="color-box" style="background: #fec300;"></span> 51 - 55
+                        <div class="legenda-item"><span class="color-box" style="background: #fffb00;"></span> 51 - 55
                         </div>
-                        <div class="legenda-item"><span class="color-box" style="background: #fc9b00;"></span> 41 - 50
+                        <div class="legenda-item"><span class="color-box" style="background: #00e8f4;"></span> 41 - 50
                         </div>
-                        <div class="legenda-item"><span class="color-box" style="background: #e27a03;"></span> 31 - 40
+                        <div class="legenda-item"><span class="color-box" style="background: #4d8bff;"></span> 31 - 40
                         </div>
-                        <div class="legenda-item"><span class="color-box" style="background: #f21212;"></span> 21 - 30
+                        <div class="legenda-item"><span class="color-box" style="background: #0052eb;"></span> 21 - 30
                         </div>
-                        <div class="legenda-item"><span class="color-box" style="background: #c42b23;"></span>
+                        <div class="legenda-item"><span class="color-box" style="background: #040db8;"></span>
                             < 20 (Pessimo)</div>
                         </div>
                 </details>
@@ -112,10 +112,9 @@
             <aside id="ranking-destra" class="ranking-sidebar">
                 <div class="ranking-section">
                     <h3 class="rank-title top-title">TOP 3 REGIONI</h3>
-                    <div id="top-3-container" class="rank-list">
+                    <div class="rank-list">
                         <p class="empty-msg">Calcola l'indice per vedere la classifica</p>
-                        <!-- Qui verranno inseriti i <li> da JS -->
-                        <ul id="top-3-list"></ul>
+                        <ul id="top-3-list-reg"></ul>
                     </div>
                 </div>
 
@@ -123,9 +122,8 @@
 
                 <div class="ranking-section">
                     <h3 class="rank-title flop-title">FLOP 3 REGIONI</h3>
-                    <div id="flop-3-container" class="rank-list">
-                        <!-- Qui verranno inseriti i <li> da JS -->
-                        <ul id="flop-3-list"></ul>
+                    <div class="rank-list">
+                        <ul id="flop-3-list-reg"></ul>
                     </div>
                 </div>
             </aside>
@@ -136,9 +134,19 @@
                 <h3 id="nome-regione-titolo">Dettaglio Regione</h3>
 
                 <div class="ranking-section">
-                    <h3 class="rank-title">RANKING PROVINCE</h3>
-                    <ul id="lista-ranking-province" class="rank-list">
-                    </ul>
+                    <h3 id="top-title-prov" class="rank-title top-title">TOP 3 PROVINCE</h3>
+                    <div class="rank-list">
+                        <ul id="top-3-list-prov"></ul>
+                    </div>
+                </div>
+
+                <div class="ranking-divider"></div>
+
+                <div id="container-flop-prov" class="ranking-section">
+                    <h3 class="rank-title flop-title">FLOP 3 PROVINCE</h3>
+                    <div class="rank-list">
+                        <ul id="flop-3-list-prov"></ul>
+                    </div>
                 </div>
             </div>
             <div id="map-regione"></div>
@@ -159,7 +167,7 @@
                 <li><strong>Calcolo:</strong> Clicca "Calcola" per aggiornare i colori della mappa nazionale.</li>
                 <li><strong>Dettaglio:</strong> Clicca su una regione nella mappa per esplorare i dati delle singole
                     province.</li>
-                <li><strong>Colori:</strong> Il verde indica un alto potenziale, il rosso una bassa idoneità.</li>
+                <li><strong>Colori:</strong> Il rosso indica un alto potenziale, il blu una bassa idoneità.</li>
             </ul>
             <strong>Riferimenti Dati:</strong><br>
             • <em>Irradiazione:</em> Database PVGIS-SARAH (Media anno 2023).<br>

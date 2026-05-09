@@ -86,8 +86,24 @@ function mostraDettaglio(nomeRegione) {
             }
         }
 
-        // Popoliamo la lista nel dettaglio
-        aggiornaListaRanking('lista-ranking-province', rankingProvince);
+        // LOGICA RANKING PROVINCE (per la regione aperta)
+        if (rankingProvince.length > 2) {
+            document.getElementById('top-title-prov').textContent = "TOP 3 PROVINCE";
+            document.getElementById('container-flop-prov').classList.remove('nascosto');
+            // Top 3
+            const top3prov = [...rankingProvince].sort((a, b) => b.score - a.score).slice(0, 3);
+            aggiornaListaRanking('top-3-list-prov', top3prov);
+
+            // Flop 3 (gli ultimi 3, invertiti per mostrare il peggiore in cima)
+            const flop3prov = [...rankingProvince].sort((a, b) => a.score - b.score).slice(0, 3);
+            aggiornaListaRanking('flop-3-list-prov', flop3prov, false);
+        } else {
+            // Se ci sono meno di 3 province, mostriamo una semplice lista di esse
+            document.getElementById('top-title-prov').textContent = "PROVINCE";
+            document.getElementById('container-flop-prov').classList.add('nascosto');
+            aggiornaListaRanking('top-3-list-prov', rankingProvince);
+        }
+
 
         layerProvinceAttive = L.geoJSON(filtrate, {
             // STILE DINAMICO: calcoliamo il colore provincia per provincia
@@ -139,18 +155,18 @@ function getColorByScore(score) {
     if (score === null || score === undefined) return '#c6c6c6'; // Grigio se nessun dato
     // 100-91 / 90-81 / 80-76 / 75-71 / 70-66 / 65-61 / 60-56 / 55-51 / 50-41 / 40-31 / 30-21 / 20-0
 
-    return score > 90 ? '#0b901c' : // Verde Scuro
-        score > 80 ? '#5fc610' : // Verde
-            score > 75 ? '#8fea20' : // Verde chiaro
-                score > 70 ? '#d4f52d' : // Giallo-Verde 
-                    score > 65 ? '#fffb00' : // Giallo chiaro
-                        score > 60 ? '#ffea00' : // Giallo
-                            score > 55 ? '#edd500' : // Giallo scuro
-                                score > 50 ? '#fec300' : // Arancione chiaro
-                                    score > 40 ? '#fc9b00' : // Arancione
-                                        score > 30 ? '#e27a03' : // Arancione scuro
-                                            score > 20 ? '#f21212' : // Rosso
-                                                '#c42b23';  // Rosso scuro
+    return score > 90 ? '#c42b23' : // Rosso Scuro
+        score > 80 ? '#f21212' : // Rosso
+            score > 75 ? '#e27a03' : // Arancione scuro
+                score > 70 ? '#fc9b00' : // Arancione 
+                    score > 65 ? '#fec300' : // Aranzione chiaro
+                        score > 60 ? '#edd500' : // Giallo scuro
+                            score > 55 ? '#ffea00' : // Giallo
+                                score > 50 ? '#fffb00' : // Giallo chiaro
+                                    score > 40 ? '#00e8f4' : // Azzurro chiaro
+                                        score > 30 ? '#4d8bff' : // azzurro scuro
+                                            score > 20 ? '#0052eb' : // Blu
+                                                '#040db8';  // Blu scuro
 }
 
 // Viene chiamata da sidebar.js quando si clicca "Calcola" o si cambia il mese
@@ -202,11 +218,11 @@ window.aggiornaMappaRegioni = function (pesi) {
     // LOGICA RANKING REGIONI
     // Top 3
     const top3 = [...punteggiPerRanking].sort((a, b) => b.score - a.score).slice(0, 3);
-    aggiornaListaRanking('top-3-list', top3);
+    aggiornaListaRanking('top-3-list-reg', top3);
 
     // Flop 3 (gli ultimi 3, invertiti per mostrare il peggiore in cima)
     const flop3 = [...punteggiPerRanking].sort((a, b) => a.score - b.score).slice(0, 3);
-    aggiornaListaRanking('flop-3-list', flop3, false);
+    aggiornaListaRanking('flop-3-list-reg', flop3, false);
 
     // Rimuove il messaggio "Calcola l'indice..." se presente
     const msg = document.querySelector('.empty-msg');

@@ -68,14 +68,14 @@
     margin-top: 0;
 }
 
-.top-title {
-    color: #27ae60;
-    border-color: #27ae60;
+.flop-title {
+    color: #1242f1;
+    border-color: #1242f1;
 }
 
-.flop-title {
-    color: #c0392b;
-    border-color: #c0392b;
+.top-title {
+    color: #da3725;
+    border-color: #da3725;
 }
 
 .rank-list ul {
