@@ -81,8 +81,8 @@ function mostraDettaglio(nomeRegione) {
             const infoProv = datiProvinceSPI[sigla];
 
             if (infoProv.regione === nomeRegioneRanking) {
-                const score = calcolaPunteggioSPI(infoProv, ultimiPesiCalcolati);
-                rankingProvince.push({ nome: infoProv.nome, score: score });
+                const score = calcolaPunteggioSPI(infoProv, ultimiPesiCalcolati, true);
+                rankingProvince.push({ nome: infoProv.nome, score: score.totale });
             }
         }
 
@@ -116,8 +116,8 @@ function mostraDettaglio(nomeRegione) {
 
                 // Se troviamo i dati nel nostro JSON, calcoliamo il punteggio
                 if (item) {
-                    const score = calcolaPunteggioSPI(item, ultimiPesiCalcolati);
-                    color = getColorByScore(score);
+                    const score = calcolaPunteggioSPI(item, ultimiPesiCalcolati, true);
+                    color = getColorByScore(score.totale);
                 }
 
                 return {
@@ -134,8 +134,11 @@ function mostraDettaglio(nomeRegione) {
                 let labelTesto = nomeDaMostrare;
 
                 if (item) {
-                    const score = calcolaPunteggioSPI(item, ultimiPesiCalcolati);
-                    labelTesto = `${nomeDaMostrare}: ${score.toFixed(1)}`;
+                    const score = calcolaPunteggioSPI(item, ultimiPesiCalcolati, true);
+                    labelTesto = `<b>${nomeDaMostrare}: ${score.totale.toFixed(1)}</b> <br> 
+                        <em>Irrad: ${score.irrad.toFixed(1)}</em> <br>
+                        <em>Reddito: ${score.reddito.toFixed(1)}</em> <br>
+                        <em>Edifici: ${score.edifici.toFixed(1)}</em>`;
                 }
 
                 l.bindTooltip(labelTesto);
@@ -181,10 +184,10 @@ window.aggiornaMappaRegioni = function (pesi) {
     const punteggiRegioni = {};
     for (const nomeReg in datiRegioniSPI) {
         const item = datiRegioniSPI[nomeReg];
-        const score = calcolaPunteggioSPI(item, pesi);
+        const score = calcolaPunteggioSPI(item, pesi, false);
         punteggiRegioni[nomeReg] = score;
         // Aggiungiamo all'array per il ranking
-        punteggiPerRanking.push({ nome: nomeReg, score: score });
+        punteggiPerRanking.push({ nome: nomeReg, score: score.totale });
     }
 
     // 2. Ricolora la mappa in base ai punteggi
@@ -200,11 +203,14 @@ window.aggiornaMappaRegioni = function (pesi) {
         const score = punteggiRegioni[key];
 
         if (score !== undefined) {
-            const color = getColorByScore(score);
+            const color = getColorByScore(score.totale);
             layer.setStyle({ fillColor: color });
 
             // Aggiorna l'etichetta per mostrare il punteggio
-            layer.setTooltipContent(`${nomeRegGeo}: ${score.toFixed(1)}`);
+            layer.setTooltipContent(`<b>${nomeRegGeo}: ${score.totale.toFixed(1)}</b> <br>
+            <em>Irrad: ${score.irrad.toFixed(1)}</em> <br>
+            <em>Reddito: ${score.reddito.toFixed(1)}</em> <br>
+            <em>Edifici: ${score.edifici.toFixed(1)}</em>`);
         }
     });
 

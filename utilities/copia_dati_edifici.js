@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-function aggiornaDatiProvince() {
+function copiaDatiEdifici() {
     console.log("Inizio aggiornamento del file JSON...");
 
     // 1. Legge il file JSON originale
@@ -23,7 +23,7 @@ function aggiornaDatiProvince() {
         return;
     }
 
-    // 3. Estrae i dati dal CSV e li mette in una mappa { "Nome Provincia": Percentuale }
+    // 3. Estrae i dati dal CSV e li mette in una mappa { "Nome Provincia": Edifici pesati }
     const mappaCsv = {};
     // Partiamo da 1 per saltare l'intestazione del CSV
     for (let i = 1; i < righeCsv.length; i++) {
@@ -33,9 +33,8 @@ function aggiornaDatiProvince() {
         const colonne = riga.split(';');
         const provincia = colonne[1].trim();
         
-        // ISTAT/il nostro script precedente usa la virgola per i decimali, JS vuole il punto
-        const percStr = colonne[4].replace(',', '.');
-        mappaCsv[provincia] = parseFloat(percStr);
+        const ed_pesati = colonne[6].trim(); // La colonna 6 contiene il numero intero degli edifici pesati
+        mappaCsv[provincia] = parseInt(ed_pesati);
     }
 
     // 4. Scorre le province del JSON e aggiorna il parametro edifici_bassi
@@ -55,8 +54,8 @@ function aggiornaDatiProvince() {
             const mc = mappaCsv['Medio Campidano'] || 0;
             const ci = mappaCsv['Carbonia-Iglesias'] || 0;
             if (mc > 0 && ci > 0) {
-                // Calcola la media e arrotonda a 2 decimali
-                prov.edifici_bassi = parseFloat(((mc + ci) / 2).toFixed(2));
+                // Calcola la media e arrotonda al numero intero più vicino
+                prov.edifici_bassi = parseFloat(((mc + ci) / 2).toFixed(0));
             }
             continue; // Passa alla prossima provincia
         }
@@ -65,13 +64,13 @@ function aggiornaDatiProvince() {
         if (mappaCsv[nomeRicerca] !== undefined) {
             prov.edifici_bassi = mappaCsv[nomeRicerca];
         } else {
-            console.log(`\u26A0\uFE0F Attenzione: Dato non trovato nel CSV per ${nomeProv}`);
+            console.log(`Attenzione: Dato non trovato nel CSV per ${nomeProv}`);
         }
     }
 
     // 5. Salva il file JSON aggiornato
     fs.writeFileSync('dati_province.json', JSON.stringify(datiProv, null, 2), 'utf-8');
-    console.log('\u2705 Operazione completata! Il file dati_province.json è stato aggiornato con successo.');
+    console.log('Operazione completata! Il file dati_province.json è stato aggiornato con successo.');
 }
 
-aggiornaDatiProvince();
+copiaDatiEdifici();

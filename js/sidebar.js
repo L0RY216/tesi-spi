@@ -54,9 +54,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const MAX_REDDITO_ASSOLUTO = 30742;
     const MAX_IRRAD_ANNUALE = 34999;
     const MAX_IRRAD_MENSILE = 249.29;
+    const MAX_EDIFICI_BASSI_REG = 1332784;
+    const MAX_EDIFICI_BASSI_PROV = 316295;
 
     // Questa funzione trasforma i dati della provincia/regione in un punteggio 0-100
-    window.calcolaPunteggioSPI = function (item, pesi) {
+    window.calcolaPunteggioSPI = function (item, pesi, flag) {
+        // flag = false, se stiamo calcolando per le regioni (usa MAX_EDIFICI_BASSI_REG), true per le province (usa MAX_EDIFICI_BASSI_PROV)
+
         const meseSelezionato = document.querySelector('input[name="month"]:checked').value;
 
         // Normalizzazione: portiamo tutto in scala 0-1
@@ -64,7 +68,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const scoreIrrad = (item.irradiazione[meseSelezionato] / maxIrrad);
 
         const scoreReddito = (item.reddito / MAX_REDDITO_ASSOLUTO);
-        const scoreEdifici = (item.edifici_bassi / 100);
+
+        const maxEdifici = flag ? MAX_EDIFICI_BASSI_PROV : MAX_EDIFICI_BASSI_REG;
+        const scoreEdifici = (item.edifici_bassi / maxEdifici);
 
         // Applichiamo i pesi (w/100) e sommiamo
         const punteggioFinale = (
@@ -73,7 +79,15 @@ document.addEventListener('DOMContentLoaded', function () {
             (scoreEdifici * (pesi.edifici / 100))
         ) * 100; // Riportiamo in scala 0-100 per i colori della mappa
 
-        return punteggioFinale;
+        let valoriDiRitorno = {
+            irrad: (scoreIrrad * pesi.irrad),
+            reddito: (scoreReddito * pesi.reddito),
+            edifici: (scoreEdifici * pesi.edifici),
+            totale: punteggioFinale
+        };
+
+        console.log(valoriDiRitorno);
+        return valoriDiRitorno;
     };
 
     // 4. GESTIONE EVENTI
@@ -122,18 +136,18 @@ const btn = document.getElementById("btn-guida");
 const span = document.getElementsByClassName("close-modal")[0];
 
 // Apri al click
-btn.onclick = function() {
-  modal.classList.remove("nascosto");
+btn.onclick = function () {
+    modal.classList.remove("nascosto");
 }
 
 // Chiudi con la X
-span.onclick = function() {
-  modal.classList.add("nascosto");
+span.onclick = function () {
+    modal.classList.add("nascosto");
 }
 
 // Chiudi cliccando fuori dalla finestra bianca
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.classList.add("nascosto");
-  }
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.classList.add("nascosto");
+    }
 }

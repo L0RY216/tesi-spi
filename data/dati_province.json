@@ -20,7 +20,7 @@
       "annuo": 34999
     },
     "reddito": 16367,
-    "edifici_bassi": 86.38
+    "edifici_bassi": 141957
   },
   "AL": {
     "nome": "Alessandria",
@@ -43,7 +43,7 @@
       "annuo": 28270
     },
     "reddito": 23165,
-    "edifici_bassi": 94.4
+    "edifici_bassi": 121388
   },
   "AN": {
     "nome": "Ancona",
@@ -66,7 +66,7 @@
       "annuo": 28524
     },
     "reddito": 22801,
-    "edifici_bassi": 87.64
+    "edifici_bassi": 73030
   },
   "AO": {
     "nome": "Aosta",
@@ -89,7 +89,7 @@
       "annuo": 26718
     },
     "reddito": 24179,
-    "edifici_bassi": 83.23
+    "edifici_bassi": 35972
   },
   "AR": {
     "nome": "Arezzo",
@@ -112,7 +112,7 @@
       "annuo": 28522
     },
     "reddito": 22612,
-    "edifici_bassi": 92.9
+    "edifici_bassi": 71145
   },
   "AP": {
     "nome": "Ascoli Piceno",
@@ -135,7 +135,7 @@
       "annuo": 28090
     },
     "reddito": 21030,
-    "edifici_bassi": 80.17
+    "edifici_bassi": 31410
   },
   "AT": {
     "nome": "Asti",
@@ -158,7 +158,7 @@
       "annuo": 28157
     },
     "reddito": 22365,
-    "edifici_bassi": 95.62
+    "edifici_bassi": 66383
   },
   "AV": {
     "nome": "Avellino",
@@ -181,7 +181,7 @@
       "annuo": 29740
     },
     "reddito": 18253,
-    "edifici_bassi": 94.45
+    "edifici_bassi": 118956
   },
   "BA": {
     "nome": "Bari",
@@ -204,7 +204,7 @@
       "annuo": 31031
     },
     "reddito": 19523,
-    "edifici_bassi": 85.76
+    "edifici_bassi": 154184
   },
   "BT": {
     "nome": "Barletta-Andria-Trani",
@@ -227,7 +227,7 @@
       "annuo": 31127
     },
     "reddito": 16323,
-    "edifici_bassi": 86.23
+    "edifici_bassi": 49282
   },
   "BL": {
     "nome": "Belluno",
@@ -250,7 +250,7 @@
       "annuo": 24929
     },
     "reddito": 23493,
-    "edifici_bassi": 84.48
+    "edifici_bassi": 62278
   },
   "BN": {
     "nome": "Benevento",
@@ -273,7 +273,7 @@
       "annuo": 30091
     },
     "reddito": 17692,
-    "edifici_bassi": 95.09
+    "edifici_bassi": 78940
   },
   "BG": {
     "nome": "Bergamo",
@@ -296,7 +296,7 @@
       "annuo": 27834
     },
     "reddito": 24803,
-    "edifici_bassi": 89.67
+    "edifici_bassi": 162405
   },
   "BI": {
     "nome": "Biella",
@@ -319,7 +319,7 @@
       "annuo": 27841
     },
     "reddito": 23158,
-    "edifici_bassi": 89.41
+    "edifici_bassi": 48942
   },
   "BO": {
     "nome": "Bologna",
@@ -342,7 +342,7 @@
       "annuo": 28199
     },
     "reddito": 26780,
-    "edifici_bassi": 82.23
+    "edifici_bassi": 101922
   },
   "BZ": {
     "nome": "Bolzano",
@@ -365,7 +365,7 @@
       "annuo": 26764
     },
     "reddito": 26355,
-    "edifici_bassi": 84.96
+    "edifici_bassi": 72767
   },
   "BS": {
     "nome": "Brescia",
@@ -388,7 +388,7 @@
       "annuo": 28188
     },
     "reddito": 24111,
-    "edifici_bassi": 92.29
+    "edifici_bassi": 213021
   },
   "BR": {
     "nome": "Brindisi",
@@ -411,7 +411,7 @@
       "annuo": 32095
     },
     "reddito": 17691,
-    "edifici_bassi": 97.05
+    "edifici_bassi": 127885
   },
   "CA": {
     "nome": "Cagliari",
@@ -434,7 +434,7 @@
       "annuo": 33418
     },
     "reddito": 22659,
-    "edifici_bassi": 95.01
+    "edifici_bassi": 125015
   },
   "CL": {
     "nome": "Caltanissetta",
@@ -457,7 +457,7 @@
       "annuo": 34172
     },
     "reddito": 17323,
-    "edifici_bassi": 85.06
+    "edifici_bassi": 78625
   },
   "CB": {
     "nome": "Campobasso",
@@ -480,7 +480,7 @@
       "annuo": 29642
     },
     "reddito": 18095,
-    "edifici_bassi": 90.99
+    "edifici_bassi": 66452
   },
   "CE": {
     "nome": "Caserta",
@@ -503,7 +503,7 @@
       "annuo": 30265
     },
     "reddito": 18340,
-    "edifici_bassi": 94.43
+    "edifici_bassi": 173736
   },
   "CT": {
     "nome": "Catania",
@@ -526,7 +526,7 @@
       "annuo": 34498
     },
     "reddito": 18694,
-    "edifici_bassi": 89.99
+    "edifici_bassi": 205927
   },
   "CZ": {
     "nome": "Catanzaro",
@@ -549,7 +549,7 @@
       "annuo": 32565
     },
     "reddito": 18007,
-    "edifici_bassi": 90.7
+    "edifici_bassi": 98780
   },
   "CH": {
     "nome": "Chieti",
@@ -572,7 +572,7 @@
       "annuo": 29621
     },
     "reddito": 19415,
-    "edifici_bassi": 89.91
+    "edifici_bassi": 93805
   },
   "CO": {
     "nome": "Como",
@@ -595,7 +595,7 @@
       "annuo": 26881
     },
     "reddito": 24131,
-    "edifici_bassi": 91.59
+    "edifici_bassi": 110875
   },
   "CS": {
     "nome": "Cosenza",
@@ -618,7 +618,7 @@
       "annuo": 30831
     },
     "reddito": 16620,
-    "edifici_bassi": 89.45
+    "edifici_bassi": 187088
   },
   "CR": {
     "nome": "Cremona",
@@ -641,7 +641,7 @@
       "annuo": 28346
     },
     "reddito": 24396,
-    "edifici_bassi": 95.55
+    "edifici_bassi": 67210
   },
   "KR": {
     "nome": "Crotone",
@@ -664,7 +664,7 @@
       "annuo": 32592
     },
     "reddito": 16208,
-    "edifici_bassi": 88.62
+    "edifici_bassi": 50513
   },
   "CN": {
     "nome": "Cuneo",
@@ -687,7 +687,7 @@
       "annuo": 27565
     },
     "reddito": 22942,
-    "edifici_bassi": 94.23
+    "edifici_bassi": 169658
   },
   "EN": {
     "nome": "Enna",
@@ -710,7 +710,7 @@
       "annuo": 33252
     },
     "reddito": 16864,
-    "edifici_bassi": 87.99
+    "edifici_bassi": 59888
   },
   "FM": {
     "nome": "Fermo",
@@ -733,7 +733,7 @@
       "annuo": 29895
     },
     "reddito": 20018,
-    "edifici_bassi": 84.73
+    "edifici_bassi": 32521
   },
   "FE": {
     "nome": "Ferrara",
@@ -756,7 +756,7 @@
       "annuo": 28395
     },
     "reddito": 22486,
-    "edifici_bassi": 95.57
+    "edifici_bassi": 81623
   },
   "FI": {
     "nome": "Firenze",
@@ -779,7 +779,7 @@
       "annuo": 28639
     },
     "reddito": 24814,
-    "edifici_bassi": 85.85
+    "edifici_bassi": 112292
   },
   "FG": {
     "nome": "Foggia",
@@ -802,7 +802,7 @@
       "annuo": 31101
     },
     "reddito": 16696,
-    "edifici_bassi": 91.15
+    "edifici_bassi": 110902
   },
   "FC": {
     "nome": "Forlì-Cesena",
@@ -825,7 +825,7 @@
       "annuo": 28426
     },
     "reddito": 22567,
-    "edifici_bassi": 92.75
+    "edifici_bassi": 71105
   },
   "FR": {
     "nome": "Frosinone",
@@ -848,7 +848,7 @@
       "annuo": 30090
     },
     "reddito": 19632,
-    "edifici_bassi": 94.87
+    "edifici_bassi": 138904
   },
   "GE": {
     "nome": "Genova",
@@ -871,7 +871,7 @@
       "annuo": 28071
     },
     "reddito": 24399,
-    "edifici_bassi": 75.48
+    "edifici_bassi": 74667
   },
   "GO": {
     "nome": "Gorizia",
@@ -894,7 +894,7 @@
       "annuo": 26220
     },
     "reddito": 22536,
-    "edifici_bassi": 92.92
+    "edifici_bassi": 28582
   },
   "GR": {
     "nome": "Grosseto",
@@ -917,7 +917,7 @@
       "annuo": 31149
     },
     "reddito": 20753,
-    "edifici_bassi": 90.62
+    "edifici_bassi": 47272
   },
   "IM": {
     "nome": "Imperia",
@@ -940,7 +940,7 @@
       "annuo": 29424
     },
     "reddito": 19618,
-    "edifici_bassi": 85.43
+    "edifici_bassi": 47901
   },
   "IS": {
     "nome": "Isernia",
@@ -963,7 +963,7 @@
       "annuo": 29543
     },
     "reddito": 18190,
-    "edifici_bassi": 91.72
+    "edifici_bassi": 31440
   },
   "AQ": {
     "nome": "L'Aquila",
@@ -986,7 +986,7 @@
       "annuo": 29021
     },
     "reddito": 20796,
-    "edifici_bassi": 93.05
+    "edifici_bassi": 104305
   },
   "SP": {
     "nome": "La Spezia",
@@ -1009,7 +1009,7 @@
       "annuo": 28684
     },
     "reddito": 23471,
-    "edifici_bassi": 87.48
+    "edifici_bassi": 40611
   },
   "LT": {
     "nome": "Latina",
@@ -1032,7 +1032,7 @@
       "annuo": 31595
     },
     "reddito": 19447,
-    "edifici_bassi": 91.37
+    "edifici_bassi": 110584
   },
   "LE": {
     "nome": "Lecce",
@@ -1055,7 +1055,7 @@
       "annuo": 32271
     },
     "reddito": 17512,
-    "edifici_bassi": 98.84
+    "edifici_bassi": 312621
   },
   "LC": {
     "nome": "Lecco",
@@ -1078,7 +1078,7 @@
       "annuo": 26990
     },
     "reddito": 26443,
-    "edifici_bassi": 88.93
+    "edifici_bassi": 56061
   },
   "LI": {
     "nome": "Livorno",
@@ -1101,7 +1101,7 @@
       "annuo": 29713
     },
     "reddito": 22788,
-    "edifici_bassi": 88.41
+    "edifici_bassi": 43656
   },
   "LO": {
     "nome": "Lodi",
@@ -1124,7 +1124,7 @@
       "annuo": 28219
     },
     "reddito": 24960,
-    "edifici_bassi": 94.02
+    "edifici_bassi": 33672
   },
   "LU": {
     "nome": "Lucca",
@@ -1147,7 +1147,7 @@
       "annuo": 28258
     },
     "reddito": 22678,
-    "edifici_bassi": 95.51
+    "edifici_bassi": 123734
   },
   "MC": {
     "nome": "Macerata",
@@ -1170,7 +1170,7 @@
       "annuo": 29136
     },
     "reddito": 21360,
-    "edifici_bassi": 88.2
+    "edifici_bassi": 63945
   },
   "MN": {
     "nome": "Mantova",
@@ -1193,7 +1193,7 @@
       "annuo": 28352
     },
     "reddito": 23364,
-    "edifici_bassi": 96.8
+    "edifici_bassi": 91218
   },
   "MS": {
     "nome": "Massa-Carrara",
@@ -1216,7 +1216,7 @@
       "annuo": 27644
     },
     "reddito": 21797,
-    "edifici_bassi": 94.61
+    "edifici_bassi": 56526
   },
   "MT": {
     "nome": "Matera",
@@ -1239,7 +1239,7 @@
       "annuo": 31077
     },
     "reddito": 17973,
-    "edifici_bassi": 85.83
+    "edifici_bassi": 38496
   },
   "ME": {
     "nome": "Messina",
@@ -1262,7 +1262,7 @@
       "annuo": 32260
     },
     "reddito": 18869,
-    "edifici_bassi": 89.02
+    "edifici_bassi": 169956
   },
   "MI": {
     "nome": "Milano",
@@ -1285,7 +1285,7 @@
       "annuo": 27935
     },
     "reddito": 30742,
-    "edifici_bassi": 75.55
+    "edifici_bassi": 167642
   },
   "MO": {
     "nome": "Modena",
@@ -1308,7 +1308,7 @@
       "annuo": 28407
     },
     "reddito": 25618,
-    "edifici_bassi": 86.97
+    "edifici_bassi": 103487
   },
   "MB": {
     "nome": "Monza e della Brianza",
@@ -1331,7 +1331,7 @@
       "annuo": 27851
     },
     "reddito": 27188,
-    "edifici_bassi": 88.53
+    "edifici_bassi": 89174
   },
   "NA": {
     "nome": "Napoli",
@@ -1354,7 +1354,7 @@
       "annuo": 31184
     },
     "reddito": 19474,
-    "edifici_bassi": 85.78
+    "edifici_bassi": 251260
   },
   "NO": {
     "nome": "Novara",
@@ -1377,7 +1377,7 @@
       "annuo": 28290
     },
     "reddito": 24984,
-    "edifici_bassi": 92.79
+    "edifici_bassi": 74249
   },
   "NU": {
     "nome": "Nuoro",
@@ -1400,7 +1400,7 @@
       "annuo": 32265
     },
     "reddito": 17543,
-    "edifici_bassi": 92.36
+    "edifici_bassi": 50000
   },
   "OR": {
     "nome": "Oristano",
@@ -1423,7 +1423,7 @@
       "annuo": 32964
     },
     "reddito": 17834,
-    "edifici_bassi": 97.98
+    "edifici_bassi": 68145
   },
   "PD": {
     "nome": "Padova",
@@ -1446,7 +1446,7 @@
       "annuo": 27946
     },
     "reddito": 24729,
-    "edifici_bassi": 95.85
+    "edifici_bassi": 183686
   },
   "PA": {
     "nome": "Palermo",
@@ -1469,7 +1469,7 @@
       "annuo": 33066
     },
     "reddito": 19315,
-    "edifici_bassi": 83.28
+    "edifici_bassi": 231958
   },
   "PR": {
     "nome": "Parma",
@@ -1492,7 +1492,7 @@
       "annuo": 28410
     },
     "reddito": 26354,
-    "edifici_bassi": 86.07
+    "edifici_bassi": 77459
   },
   "PV": {
     "nome": "Pavia",
@@ -1515,7 +1515,7 @@
       "annuo": 28208
     },
     "reddito": 24221,
-    "edifici_bassi": 95.69
+    "edifici_bassi": 131325
   },
   "PG": {
     "nome": "Perugia",
@@ -1538,7 +1538,7 @@
       "annuo": 29337
     },
     "reddito": 21081,
-    "edifici_bassi": 91.85
+    "edifici_bassi": 137371
   },
   "PU": {
     "nome": "Pesaro e Urbino",
@@ -1561,7 +1561,7 @@
       "annuo": 28147
     },
     "reddito": 21830,
-    "edifici_bassi": 91.19
+    "edifici_bassi": 71333
   },
   "PE": {
     "nome": "Pescara",
@@ -1584,7 +1584,7 @@
       "annuo": 29623
     },
     "reddito": 20488,
-    "edifici_bassi": 89.24
+    "edifici_bassi": 54287
   },
   "PC": {
     "nome": "Piacenza",
@@ -1607,7 +1607,7 @@
       "annuo": 28313
     },
     "reddito": 24751,
-    "edifici_bassi": 92
+    "edifici_bassi": 67705
   },
   "PI": {
     "nome": "Pisa",
@@ -1630,7 +1630,7 @@
       "annuo": 29057
     },
     "reddito": 23635,
-    "edifici_bassi": 94.31
+    "edifici_bassi": 76584
   },
   "PT": {
     "nome": "Pistoia",
@@ -1653,7 +1653,7 @@
       "annuo": 28634
     },
     "reddito": 21474,
-    "edifici_bassi": 94.52
+    "edifici_bassi": 62761
   },
   "PN": {
     "nome": "Pordenone",
@@ -1676,7 +1676,7 @@
       "annuo": 27173
     },
     "reddito": 23651,
-    "edifici_bassi": 96.66
+    "edifici_bassi": 85477
   },
   "PZ": {
     "nome": "Potenza",
@@ -1699,7 +1699,7 @@
       "annuo": 29180
     },
     "reddito": 18645,
-    "edifici_bassi": 92.18
+    "edifici_bassi": 106178
   },
   "PO": {
     "nome": "Prato",
@@ -1722,7 +1722,7 @@
       "annuo": 28508
     },
     "reddito": 21881,
-    "edifici_bassi": 89.68
+    "edifici_bassi": 32108
   },
   "RG": {
     "nome": "Ragusa",
@@ -1745,7 +1745,7 @@
       "annuo": 34354
     },
     "reddito": 16375,
-    "edifici_bassi": 94.24
+    "edifici_bassi": 114795
   },
   "RA": {
     "nome": "Ravenna",
@@ -1768,7 +1768,7 @@
       "annuo": 28865
     },
     "reddito": 23186,
-    "edifici_bassi": 95.36
+    "edifici_bassi": 85651
   },
   "RC": {
     "nome": "Reggio Calabria",
@@ -1791,7 +1791,7 @@
       "annuo": 32920
     },
     "reddito": 17466,
-    "edifici_bassi": 90.53
+    "edifici_bassi": 156219
   },
   "RE": {
     "nome": "Reggio Emilia",
@@ -1814,7 +1814,7 @@
       "annuo": 28443
     },
     "reddito": 25301,
-    "edifici_bassi": 90.12
+    "edifici_bassi": 88038
   },
   "RI": {
     "nome": "Rieti",
@@ -1837,7 +1837,7 @@
       "annuo": 29644
     },
     "reddito": 20830,
-    "edifici_bassi": 94.96
+    "edifici_bassi": 61780
   },
   "RN": {
     "nome": "Rimini",
@@ -1860,7 +1860,7 @@
       "annuo": 28046
     },
     "reddito": 20559,
-    "edifici_bassi": 86.94
+    "edifici_bassi": 53631
   },
   "RM": {
     "nome": "Roma",
@@ -1883,7 +1883,7 @@
       "annuo": 31204
     },
     "reddito": 25925,
-    "edifici_bassi": 80.35
+    "edifici_bassi": 316295
   },
   "RO": {
     "nome": "Rovigo",
@@ -1906,7 +1906,7 @@
       "annuo": 28235
     },
     "reddito": 21415,
-    "edifici_bassi": 98.74
+    "edifici_bassi": 70209
   },
   "SA": {
     "nome": "Salerno",
@@ -1929,7 +1929,7 @@
       "annuo": 31181
     },
     "reddito": 18139,
-    "edifici_bassi": 90.8
+    "edifici_bassi": 187452
   },
   "SS": {
     "nome": "Sassari",
@@ -1952,7 +1952,7 @@
       "annuo": 31583
     },
     "reddito": 19372,
-    "edifici_bassi": 92.74
+    "edifici_bassi": 82817
   },
   "SV": {
     "nome": "Savona",
@@ -1975,7 +1975,7 @@
       "annuo": 27818
     },
     "reddito": 22409,
-    "edifici_bassi": 84.44
+    "edifici_bassi": 52402
   },
   "SI": {
     "nome": "Siena",
@@ -1998,7 +1998,7 @@
       "annuo": 29290
     },
     "reddito": 23366,
-    "edifici_bassi": 87.08
+    "edifici_bassi": 45162
   },
   "SR": {
     "nome": "Siracusa",
@@ -2021,7 +2021,7 @@
       "annuo": 34583
     },
     "reddito": 18564,
-    "edifici_bassi": 94.33
+    "edifici_bassi": 114602
   },
   "SO": {
     "nome": "Sondrio",
@@ -2044,7 +2044,7 @@
       "annuo": 26209
     },
     "reddito": 21960,
-    "edifici_bassi": 83.31
+    "edifici_bassi": 56360
   },
   "SU": {
     "nome": "Sud Sardegna",
@@ -2067,7 +2067,7 @@
       "annuo": 33103
     },
     "reddito": 17341,
-    "edifici_bassi": 98.09
+    "edifici_bassi": 39975
   },
   "TA": {
     "nome": "Taranto",
@@ -2090,7 +2090,7 @@
       "annuo": 31674
     },
     "reddito": 18591,
-    "edifici_bassi": 94.34
+    "edifici_bassi": 132690
   },
   "TE": {
     "nome": "Teramo",
@@ -2113,7 +2113,7 @@
       "annuo": 28956
     },
     "reddito": 19388,
-    "edifici_bassi": 91.01
+    "edifici_bassi": 64831
   },
   "TR": {
     "nome": "Terni",
@@ -2136,7 +2136,7 @@
       "annuo": 30718
     },
     "reddito": 20812,
-    "edifici_bassi": 92.07
+    "edifici_bassi": 46376
   },
   "TO": {
     "nome": "Torino",
@@ -2159,7 +2159,7 @@
       "annuo": 27287
     },
     "reddito": 24851,
-    "edifici_bassi": 86.44
+    "edifici_bassi": 279926
   },
   "TP": {
     "nome": "Trapani",
@@ -2182,7 +2182,7 @@
       "annuo": 33824
     },
     "reddito": 17221,
-    "edifici_bassi": 94.24
+    "edifici_bassi": 155502
   },
   "TN": {
     "nome": "Trento",
@@ -2205,7 +2205,7 @@
       "annuo": 25935
     },
     "reddito": 23928,
-    "edifici_bassi": 76.43
+    "edifici_bassi": 95763
   },
   "TV": {
     "nome": "Treviso",
@@ -2228,7 +2228,7 @@
       "annuo": 27719
     },
     "reddito": 24007,
-    "edifici_bassi": 97.42
+    "edifici_bassi": 192674
   },
   "TS": {
     "nome": "Trieste",
@@ -2251,7 +2251,7 @@
       "annuo": 26785
     },
     "reddito": 25190,
-    "edifici_bassi": 74.6
+    "edifici_bassi": 23255
   },
   "UD": {
     "nome": "Udine",
@@ -2274,7 +2274,7 @@
       "annuo": 26311
     },
     "reddito": 23611,
-    "edifici_bassi": 94.76
+    "edifici_bassi": 147826
   },
   "VA": {
     "nome": "Varese",
@@ -2297,7 +2297,7 @@
       "annuo": 27256
     },
     "reddito": 24784,
-    "edifici_bassi": 93.39
+    "edifici_bassi": 153821
   },
   "VE": {
     "nome": "Venezia",
@@ -2320,7 +2320,7 @@
       "annuo": 27789
     },
     "reddito": 23401,
-    "edifici_bassi": 90.45
+    "edifici_bassi": 144394
   },
   "VB": {
     "nome": "Verbano-Cusio-Ossola",
@@ -2343,7 +2343,7 @@
       "annuo": 26667
     },
     "reddito": 21066,
-    "edifici_bassi": 91.92
+    "edifici_bassi": 53834
   },
   "VC": {
     "nome": "Vercelli",
@@ -2366,7 +2366,7 @@
       "annuo": 28242
     },
     "reddito": 22945,
-    "edifici_bassi": 91.42
+    "edifici_bassi": 45239
   },
   "VR": {
     "nome": "Verona",
@@ -2389,7 +2389,7 @@
       "annuo": 28167
     },
     "reddito": 23448,
-    "edifici_bassi": 93.5
+    "edifici_bassi": 159581
   },
   "VV": {
     "nome": "Vibo Valentia",
@@ -2412,7 +2412,7 @@
       "annuo": 31157
     },
     "reddito": 16407,
-    "edifici_bassi": 94.78
+    "edifici_bassi": 58991
   },
   "VI": {
     "nome": "Vicenza",
@@ -2435,7 +2435,7 @@
       "annuo": 27485
     },
     "reddito": 24118,
-    "edifici_bassi": 92.42
+    "edifici_bassi": 178093
   },
   "VT": {
     "nome": "Viterbo",
@@ -2458,6 +2458,6 @@
       "annuo": 29998
     },
     "reddito": 20105,
-    "edifici_bassi": 92.44
+    "edifici_bassi": 69380
   }
 }

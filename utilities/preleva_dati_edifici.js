@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-function calcolaEdificiBassi() {
+function prelevaDatiEdifici() {
     console.log("Ricerca dei file CSV ISTAT in corso...");
 
-    // Cerca i file nella cartella corrente che iniziano con "R" e finiscono in ".csv"
+    // Cerca i file del censimento delle 20 regioni nella cartella corrente
     const files = fs.readdirSync(__dirname).filter(f => f.startsWith('R') && f.endsWith('_indicatori_2011_localita.csv'));
 
     if (files.length === 0) {
@@ -76,55 +76,48 @@ function calcolaEdificiBassi() {
         }
     });
 
-    // 2. CALCOLO PERCENTUALI ED ESPORTAZIONE PROVINCE
-    let csvProvince = "REGIONE;PROVINCIA;EDIFICI_1_3_PIANI;TOTALE_EDIFICI_PIANI_NOTI;PERC_EDIFICI_BASSI\n";
-    const arrayPerWebApp = []; // Array per il JSON
+    // 2. CREAZIONE DATI PROVINCE
+    let csvProvince = "REGIONE;PROVINCIA;EDIFICI_1_PIANO;EDIFICI_2_PIANI;EDIFICI_3_PIANI;EDIFICI_4+_PIANI;EDIFICI_PESATI\n";
 
     for (const key in datiProvince) {
         const p = datiProvince[key];
-        const edificiBassi = p.E17 + p.E18 + p.E19;
-        const totalePiani = edificiBassi + p.E20;
+        const ed_1_piano = p.E17;
+        const ed_2_piani = p.E18
+        const ed_3_piani = p.E19;
+        const ed_4_piani = p.E20
 
-        let perc = 0;
-        if (totalePiani > 0) {
-            perc = (edificiBassi / totalePiani) * 100;
-        }
-        perc = Number(perc.toFixed(2)); // Arrotonda a 2 decimali
+        // Calcolo edifici pesati (1*E17 + 1*E18 + 1*E19 + 0*E20)
+        // Diamo un peso di 1 a edifici con 1, 2 o 3 piani e 0 a quelli con 4 o più piani
+        const ed_pesati = 1 * ed_1_piano + 1 * ed_2_piani + 1 * ed_3_piani + 0 * ed_4_piani;
 
-        // Costruisci riga CSV (usiamo la virgola per i decimali in stile italiano)
-        csvProvince += `${p.REGIONE};${p.PROVINCIA};${edificiBassi};${totalePiani};${perc.toString().replace('.', ',')}\n`;
-
-        // Push nell'array per il file JSON della web app
-        arrayPerWebApp.push({
-            provincia: p.PROVINCIA,
-            edifici_bassi_perc: perc
-        });
+        // Costruisci riga CSV
+        csvProvince += `${p.REGIONE};${p.PROVINCIA};${ed_1_piano};${ed_2_piani};${ed_3_piani};${ed_4_piani};${ed_pesati}\n`;
     }
 
-    // 3. CALCOLO PERCENTUALI ED ESPORTAZIONE REGIONI
-    let csvRegioni = "REGIONE;EDIFICI_1_3_PIANI;TOTALE_EDIFICI_PIANI_NOTI;PERC_EDIFICI_BASSI\n";
+    // 3. CREAZIONE DATI REGIONI
+    let csvRegioni = "REGIONE;EDIFICI_1_PIANO;EDIFICI_2_PIANI;EDIFICI_3_PIANI;EDIFICI_4+_PIANI;EDIFICI_PESATI\n";
 
     for (const reg in datiRegioni) {
         const r = datiRegioni[reg];
-        const edificiBassi = r.E17 + r.E18 + r.E19;
-        const totalePiani = edificiBassi + r.E20;
+        const ed_1_piano = r.E17;
+        const ed_2_piani = r.E18
+        const ed_3_piani = r.E19;
+        const ed_4_piani = r.E20;
 
-        let perc = 0;
-        if (totalePiani > 0) {
-            perc = (edificiBassi / totalePiani) * 100;
-        }
-        perc = Number(perc.toFixed(2));
+        // Calcolo edifici pesati (1*E17 + 1*E18 + 1*E19 + 0*E20)
+        // Diamo un peso di 1 a edifici con 1, 2 o 3 piani e 0 a quelli con 4 o più piani
+        const ed_pesati = 1 * ed_1_piano + 1 * ed_2_piani + 1 * ed_3_piani + 0 * ed_4_piani;
 
-        csvRegioni += `${r.REGIONE};${edificiBassi};${totalePiani};${perc.toString().replace('.', ',')}\n`;
+        csvRegioni += `${r.REGIONE};${ed_1_piano};${ed_2_piani};${ed_3_piani};${ed_4_piani};${ed_pesati}\n`;
     }
 
     // 4. SCRITTURA FILE FINALI
     fs.writeFileSync('risultati_edifici_bassi_province.csv', csvProvince, 'utf8');
     fs.writeFileSync('risultati_edifici_bassi_regioni.csv', csvRegioni, 'utf8');
 
-    console.log("Finito! Ho creato 2 file:");
+    console.log("Ho creato 2 file:");
     console.log("1. risultati_edifici_bassi_province.csv");
     console.log("2. risultati_edifici_bassi_regioni.csv");
 }
 
-calcolaEdificiBassi();
+prelevaDatiEdifici();
