@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-console.log("Generazione del file dati_regioni.json (Schema Unificato) in corso...");
+console.log("Generazione del file dati_regioni.json in corso...");
 
 try {
     const datiProvince = JSON.parse(fs.readFileSync('./data/dati_province.json', 'utf8'));
@@ -58,7 +58,7 @@ try {
     }
 
     fs.writeFileSync('./data/dati_regioni.json', JSON.stringify(outputRegioni, null, 2));
-    console.log(`Successo! Creato dati_regioni.json con struttura perfettamente identica alle province.`);
+    console.log(`Successo! Creato dati_regioni.json.`);
 
 } catch (e) {
     console.error("Errore:", e.message);

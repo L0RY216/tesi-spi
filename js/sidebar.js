@@ -86,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function () {
             totale: punteggioFinale
         };
 
-        console.log(valoriDiRitorno);
         return valoriDiRitorno;
     };
 

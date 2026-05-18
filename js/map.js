@@ -194,7 +194,7 @@ window.aggiornaMappaRegioni = function (pesi) {
     layerItalia.eachLayer(layer => {
         const nomeRegGeo = layer.feature.properties.reg_name;
 
-        // Bisogna mappare il nome GeoJSON con la chiave JSON se ci sono differenze (es. Valle d'Aosta)
+        // Bisogna mappare il nome GeoJSON con la chiave JSON
         // Gestistiamo qui le eccezioni
         let key = nomeRegGeo;
         if (key === "Valle d'Aosta/Vallée d'Aoste") key = "Valle d'Aosta";

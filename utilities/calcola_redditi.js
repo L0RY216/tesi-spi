@@ -1,17 +1,17 @@
 const fs = require('fs');
 
 try {
-    // 1. Leggo il file CSV del MEF
+    // 1. Leggo il file CSV sui redditi dei comuni
     const fileCsv = fs.readFileSync('./data/redditi_comuni.csv', 'utf8').replace(/\r/g, '');
     const righe = fileCsv.split('\n');
 
-    // 2. Leggo l'intestazione per trovare dinamicamente le colonne (il MEF usa il punto e virgola)
+    // 2. Leggo l'header per trovare le colonne utili
     const intestazioni = righe[0].split(';');
     
     const idxProv = intestazioni.findIndex(h => h.includes('Sigla Provincia'));
     const idxReg = intestazioni.findIndex(h => h.includes('Regione') && !h.includes('Codice'));
     const idxContribuenti = intestazioni.findIndex(h => h.includes('Numero contribuenti'));
-    // Cerchiamo la colonna dell'Ammontare Totale (Imponibile o Complessivo)
+    // Cerchiamo la colonna dell'Ammontare Totale
     const idxAmmontare = intestazioni.findIndex(h => h.includes('Reddito imponibile - Ammontare in euro') || h.includes('Reddito complessivo da dichiarazione - Ammontare in euro'));
 
     if (idxProv === -1 || idxContribuenti === -1 || idxAmmontare === -1) {
@@ -50,29 +50,29 @@ try {
         }
     }
 
-    // 5. Apro il nostro file dati_spi.json per aggiornarlo
-    const fileDatiSpi = fs.readFileSync('./data/dati_spi.json', 'utf8');
-    const datiSpi = JSON.parse(fileDatiSpi);
+    // 5. Apro il nostro file dati_province.json per aggiornarlo
+    const fileDatiProvince = fs.readFileSync('./data/dati_province.json', 'utf8');
+    const datiProvince = JSON.parse(fileDatiProvince);
 
     let aggiornati = 0;
 
     // 6. Calcolo la Media (Ammontare Totale / Numero Contribuenti) e la salvo
     for (const sigla in aggregatoProvince) {
-        if (datiSpi[sigla]) {
+        if (datiProvince[sigla]) {
             const media = aggregatoProvince[sigla].ammontareTot / aggregatoProvince[sigla].contribuentiTot;
             // Arrotondo all'intero (es. 24560 euro)
-            datiSpi[sigla].reddito = Math.round(media);
+            datiProvince[sigla].reddito = Math.round(media);
             aggiornati++;
         }
     }
 
     // 7. Salvo il JSON definitivo
-    fs.writeFileSync('./data/dati_spi.json', JSON.stringify(datiSpi, null, 2));
+    fs.writeFileSync('./data/dati_province.json', JSON.stringify(datiProvince, null, 2));
 
-    console.log(`Reddito medio calcolato matematicamente e aggiornato per ${aggiornati} province.`);
+    console.log(`Reddito medio calcolato per ${aggiornati} province.`);
     
-    // 8. E già che ci siamo, stampiamo a schermo le Regioni
-    // (Ci servirà per il prossimo step, quando creeremo dati_regioni.json)
+    // 8. Stampiamo a schermo le Regioni
+    // (Mi servirà per il prossimo step, quando creerò dati_regioni.json)
     console.log("\n--- ANTEPRIMA REDDITI REGIONALI CALCOLATI ---");
     for (const reg in aggregatoRegioni) {
         const mediaReg = Math.round(aggregatoRegioni[reg].ammontareTot / aggregatoRegioni[reg].contribuentiTot);

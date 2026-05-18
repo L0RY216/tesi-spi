@@ -32,15 +32,15 @@ async function fetchAllData() {
             // Aggiungiamo il parametro "annuo" arrotondato
             irradiazioneMensile['annuo'] = Math.round(totaleAnnuo);
 
-            // Costruiamo il Master JSON con i placeholder per gli altri dati
+            // Costruiamo il file JSON con i placeholder per gli altri dati
             outputData[prov.sigla] = {
                 nome: prov.nome,
                 regione: prov.regione,
                 lat: prov.lat,
                 lon: prov.lon,
                 irradiazione: irradiazioneMensile,
-                reddito: 0,          // CAMPO PRONTO PER IL PROSSIMO PARAMETRO
-                edifici_bassi: 0     // CAMPO PRONTO PER IL PROSSIMO PARAMETRO
+                reddito: 0,          // CAMPO PER IL PARAMETRO SUL REDDITO
+                edifici_bassi: 0     // CAMPO PER IL PARAMETRO SUGLI EDIFICI BASSI
             };
 
             // Pausa per rispettare i limiti del server europeo
@@ -51,9 +51,9 @@ async function fetchAllData() {
         }
     }
 
-    // Scriviamo il risultato nel nuovo Master JSON
+    // Scriviamo il risultato nel nuovo file JSON
     fs.writeFileSync('./data/dati_province.json', JSON.stringify(outputData, null, 2));
-    console.log("\nFinito! Il file 'dati_province.json' è stato creato con successo nella cartella 'data'.");
+    console.log("\nIl file 'dati_province.json' è stato creato con successo nella cartella 'data'.");
 }
 
 fetchAllData();
